@@ -1,0 +1,123 @@
+---
+title: "Messy Biographies to Clean Data - Structuring Text with LLMs and Pydantic"
+subtitle: "FOO CAFE 13 years strong"
+date: today
+author: 
+  - "Jonathan Jayes"
+title-slide-attributes:
+  data-background-image: "assets/preview_wide.png"
+  data-background-position: "bottom 10"
+  data-background-size: "90%"
+  data-background-opacity: "0.4"
+format: 
+  revealjs:
+    theme: [default, assets/clean.scss]
+    code-overflow: wrap
+    width: 1600
+    height: 900
+    fig-align: center
+    default-image-extension: svg
+    slide-number: c
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    include-in-header: 
+        - text: <link rel = "shortcut icon" href = "assets/favicon.ico" />
+
+image: "assets/preview_wide.png"
+favicon: "assets/favicon.ico"
+execute: 
+  eval: true
+  echo: false
+# bibliography: references.bib
+
+
+---
+
+
+
+
+## Agenda
+
+1. Whirlwind tour through Swedish economic history
+
+2. Messy Biographies to Clean Data
+
+3. Classification of occupational titles
+
+## About me 
+
+::: {.columns}
+::: {.column}
+
+- PhD student in Economic History at Lund
+
+- Work on economic development in Sweden and tools to make data accessible
+
+- Work part time as a data scientist at [Codera Analytics](https://codera.co.za/)
+
+- From South Africa originally
+
+:::
+::: {.column}
+
+```{r}
+knitr::include_graphics("assets/jj_run.jpeg")
+```
+
+:::
+::: 
+
+
+# Whirlwind tour through Swedish economic history{visibility="uncounted" #sec-whirlwind-tour background-color="#1b9e77"}
+
+![](assets/aYWyRzV_700bwp.jpeg)
+
+
+## When did Sweden become rich🇸🇪💸?
+
+:::{.center}
+
+```{r}
+knitr::include_graphics("figures/ed_step1_sweden.png")
+```
+
+:::
+. . .
+
+We need more context
+
+## When did Sweden become rich🇸🇪💸?
+
+:::{.center}
+
+```{r}
+knitr::include_graphics("figures/ed_step2_sweden_vs_all.png")
+```
+
+:::
+. . .
+
+Versus the rest of the world
+
+## When did Sweden become rich🇸🇪💸?
+
+:::{.center}
+
+```{r}
+knitr::include_graphics("figures/ed_step4_sweden_uk_vs_all.png")
+```
+
+:::
+
+. . .
+
+Versus the first industrializing country 🇬🇧
+
+## Why did Sweden become rich?
+
+
+
+# Messy Biographies to Clean Data{visibility="uncounted" #sec-structuring-data background-color="#1b9e77"}
+
+
+# Classification of occupational titles{visibility="uncounted" #sec-structuring-data background-color="#1b9e77"}
