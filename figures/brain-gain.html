@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figure: Sweden's Engineering Brain-Gain, 1880-1940</title>
+    <style>
+        /* 5.3 Color Theory & Typography */
+        :root {
+            --color-usa: #004e98; /* Blue for US entities */
+            --color-sweden: #4c956c; /* Green for Swedish entities */
+            --color-germany: #f4a261; /* Orange for German counterpoint */
+            --color-background: #fdfaf5; /* Parchment base */
+            --color-text: #333333;
+            --color-border: #cccccc;
+            --color-arrow: #555555;
+            --font-serif: Georgia, 'Times New Roman', serif;
+            --font-sans: 'Lato', 'Open Sans', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            padding: 2rem;
+            font-size: 14px;
+        }
+
+        /* The Main Figure Element */
+        .virtuous-circle-figure {
+            border: 1px solid var(--color-border);
+            padding: 1.5rem;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        /* 6.1 Wireframe: CSS Grid for Macro-Layout (Acts) */
+        .diagram-container {
+            display: grid;
+            grid-template-columns: 1fr 2.5fr 1.5fr; /* 3 Acts */
+            gap: 2rem;
+            min-height: 800px;
+            position: relative;
+        }
+
+        .act {
+            padding: 1rem;
+            border: 2px dashed var(--color-border);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .act-title {
+            font-family: var(--font-serif);
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--color-arrow);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        /* 3.1 & 5.2: CSS Grid for Swimlanes in Act II */
+        #act-two-content {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-rows: repeat(3, 1fr); /* 3 Swimlanes */
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .swimlane {
+            background-color: rgba(0,0,0,0.02);
+            border-radius: 5px;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .swimlane-title {
+            font-weight: bold;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: #fff;
+            padding: 0 5px;
+            color: #777;
+        }
+
+        /* 1.2 Node Styling & Visual Language */
+        .node {
+            padding: 8px 12px;
+            border: 1px solid var(--color-border);
+            background-color: #fff;
+            text-align: center;
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            z-index: 10;
+        }
+
+        .node:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            z-index: 20;
+        }
+
+        .node.circle { border-radius: 50%; }
+        .node.rectangle { border-radius: 4px; }
+        .node.usa { border-color: var(--color-usa); background-color: #eaf4ff; }
+        .node.sweden { border-color: var(--color-sweden); background-color: #e8f5e9; }
+        .node.germany { border-color: var(--color-germany); background-color: #fff8e1; }
+        
+        /* Positioning Nodes within their containers */
+        /* Note: In a real application, positions might be dynamic. This is for demonstration. */
+        #act-one { position: relative; }
+        #act-one .node { position: static; margin: 0.5rem auto; }
+        
+        #act-two .swimlane {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #act-three { position: relative; }
+        #act-three .node { position: static; margin: 0.5rem auto; }
+        
+        /* 5.2 Connectors using ::before/::after would be complex. For this demonstration,
+           we use a simple SVG layer for clarity and flexibility. */
+        #connector-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allows clicks to go through to nodes */
+            z-index: 5;
+        }
+        
+        .arrow {
+            stroke: var(--color-arrow);
+            stroke-width: 2;
+            fill: none;
+            marker-end: url(#arrowhead);
+        }
+        .arrow.feedback {
+            stroke-dasharray: 5, 5;
+        }
+        
+        /* 4.1 & 5.4: Interactive Card Styling */
+        .info-card {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            background-color: white;
+            border: 2px solid var(--color-text);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 2rem;
+            z-index: 100;
+            border-radius: 8px;
+        }
+        
+        .info-card.is-visible {
+            display: block; /* Made visible by JS */
+        }
+
+        .info-card h3 {
+            font-family: var(--font-serif);
+            margin-top: 0;
+        }
+        
+        .info-card .category {
+            font-weight: bold;
+            color: #555;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #aaa;
+        }
+        .close-btn:hover { color: #333; }
+
+        /* 6.2 Legend Styling */
+        figcaption {
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--color-border);
+            padding-top: 1rem;
+            font-family: var(--font-serif);
+        }
+        
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        .legend-swatch {
+            width: 15px;
+            height: 15px;
+            border: 1px solid #333;
+            margin-right: 8px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <figure class="virtuous-circle-figure" aria-labelledby="figure-title">
+        <h2 id="figure-title">Sweden's Engineering Brain-Gain: A Virtuous Circle (1880-1940)</h2>
+        <p>An interactive visualization of the process of technological transfer and industrial development.</p>
+
+        <div class="diagram-container" id="main-diagram">
+
+            <section class="act" id="act-one" aria-labelledby="act1-title">
+                <div class="act-title" id="act1-title">Act I: Departure from Sweden</div>
+                <div class="node sweden rectangle" data-node-id="sweden-context" onclick="showCard('card-sweden-context')">
+                    Sweden 1880-1940
+                </div>
+                <div class="node sweden" data-node-id="dev-nationalism" onclick="showCard('card-dev-nationalism')">
+                    "Development Nationalism"
+                </div>
+                <div class="node sweden" data-node-id="target-migrant" onclick="showCard('card-target-migrant')">
+                    "Target Migrant" Ideal
+                </div>
+            </section>
+
+            <section class="act" id="act-two" aria-labelledby="act2-title">
+                <div class="act-title" id="act2-title">Act II: The American Crucible & German Counterpoint</div>
+                <div id="act-two-content">
+                    
+                    <div class="swimlane" id="lane-technical">
+                        <span class="swimlane-title">Technical & Embodied Knowledge</span>
+                        <div class="node circle" data-node-id="danielson" onclick="showCard('card-danielson')">Ernst Danielson</div>
+                        <div class="node rectangle usa" data-node-id="thomson-houston" onclick="showCard('card-thomson-houston')">Thomson-Houston (GE)</div>
+                        <div class="node circle" data-node-id="palen" onclick="showCard('card-palen')">Paul Palén</div>
+                        <div class="node rectangle usa" data-node-id="anaconda" onclick="showCard('card-anaconda')">Anaconda Smelter</div>
+                    </div>
+                    
+                    <div class="swimlane" id="lane-organizational">
+                        <span class="swimlane-title">Organizational & Systemic Knowledge</span>
+                        <div class="node circle" data-node-id="edstrom" onclick="showCard('card-edstrom')">J. Sigfrid Edström</div>
+                        <div class="node rectangle usa" data-node-id="westinghouse" onclick="showCard('card-westinghouse')">Westinghouse</div>
+                        <div class="node circle" data-node-id="esselius" onclick="showCard('card-esselius')">Eric Esselius</div>
+                        <div class="node rectangle usa" data-node-id="carnegie" onclick="showCard('card-carnegie')">Carnegie Steel</div>
+                    </div>
+
+                    <div class="swimlane" id="lane-socio">
+                        <span class="swimlane-title">Socio-Managerial & Cultural Knowledge</span>
+                        <div class="node circle" data-node-id="goransson" onclick="showCard('card-goransson')">K.F. Göransson</div>
+                        <div class="node rectangle usa" data-node-id="columbia" onclick="showCard('card-columbia')">Columbia Univ.</div>
+                        <div class="node circle" data-node-id="falkman" onclick="showCard('card-falkman')">Oscar Falkman</div>
+                        <div class="node rectangle germany" data-node-id="siemens" onclick="showCard('card-siemens')">Siemens & Halske</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="act" id="act-three" aria-labelledby="act3-title">
+                <div class="act-title" id="act3-title">Act III: Return & Transformation</div>
+                 <div class="node sweden rectangle" data-node-id="asea" onclick="showCard('card-asea')">
+                    ASEA
+                </div>
+                 <div class="node sweden rectangle" data-node-id="sandviken" onclick="showCard('card-sandviken')">
+                    Sandvikens Järnverks AB
+                </div>
+                <div class="node sweden rectangle" data-node-id="bolidens" onclick="showCard('card-bolidens')">
+                    Bolidens Gruv AB
+                </div>
+            </section>
+            
+            <svg id="connector-svg"></svg>
+        </div>
+        
+        <div id="info-cards-container">
+            <div class="info-card" id="card-edstrom">
+                <span class="close-btn" onclick="hideCards()">&times;</span>
+                <h3>J. Sigfrid Edström</h3>
+                <p><strong>Journey:</strong> KTH Royal Institute of Technology → Westinghouse (USA) → ASEA (Sweden)</p>
+                <hr>
+                <p><span class="category">Organizational Knowledge:</span> Absorbed principles of mass production, standardization, and rational workshop organization at Westinghouse.</p>
+                <p><strong>Impact ("Brain-Gain"):</strong> As managing director of ASEA, he fundamentally reorganized the company based on American models, implemented systematic rationalization, and actively recruited other US-trained Swedish engineers to amplify the effect.</p>
+            </div>
+            
+             <div class="info-card" id="card-westinghouse">
+                <span class="close-btn" onclick="hideCards()">&times;</span>
+                <h3>Westinghouse Electric Corporation</h3>
+                <p>A major American manufacturing company founded in 1886. It was a key hub for electrical engineering innovation and a primary "industrial university" for visiting Swedish engineers during this period.</p>
+                <hr>
+                <p><strong>Key Swedish Engineers Hosted:</strong> J. Sigfrid Edström, Emil Lundqvist</p>
+            </div>
+            
+            <div class="info-card" id="card-asea">
+                <span class="close-btn" onclick="hideCards()">&times;</span>
+                <h3>ASEA (Allmänna Svenska Elektriska Aktiebolaget)</h3>
+                <p>A leading Swedish industrial firm, producing electrical machinery and systems. Its transformation was a prime example of the brain-gain.</p>
+                <hr>
+                <p><strong>Knowledge Infusion:</strong>
+                    <ul>
+                        <li><strong>Organizational:</strong> Reorganized by Edström using models from Westinghouse.</li>
+                        <li><strong>Technical:</strong> Solved critical three-phase system flaws thanks to Ernst Danielson's experience at Thomson-Houston (GE).</li>
+                    </ul>
+                </p>
+            </div>
+
+            </div>
+
+        <figcaption>
+            <h4>Legend & User Guide</h4>
+            <div class="legend-item">
+                <div class="legend-swatch" style="border-radius: 50%;"></div> Engineer
+            </div>
+            <div class="legend-item">
+                <div class="legend-swatch" style="border-radius: 4px;"></div> Institution/Company
+            </div>
+            <div class="legend-item">
+                <div class="legend-swatch sweden" style="background-color: #e8f5e9; border-color: var(--color-sweden);"></div> Swedish Entity
+            </div>
+            <div class="legend-item">
+                <div class="legend-swatch usa" style="background-color: #eaf4ff; border-color: var(--color-usa);"></div> US Entity
+            </div>
+             <div class="legend-item">
+                <div class="legend-swatch germany" style="background-color: #fff8e1; border-color: var(--color-germany);"></div> German Entity
+            </div>
+            <p style="margin-top: 10px;"><strong>How to use:</strong> Click on any node (person or company) to view detailed information.</p>
+        </figcaption>
+    </figure>
+
+    <script>
+        function showCard(cardId) {
+            // Hide any currently visible cards first
+            hideCards();
+            // Show the clicked card
+            const card = document.getElementById(cardId);
+            if (card) {
+                card.classList.add('is-visible');
+            }
+        }
+
+        function hideCards() {
+            document.querySelectorAll('.info-card.is-visible').forEach(card => {
+                card.classList.remove('is-visible');
+            });
+        }
+        
+        // Draw connector lines after the DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const connections = [
+                { from: 'target-migrant', to: 'edstrom', class: 'arrow' },
+                { from: 'edstrom', to: 'westinghouse', class: 'arrow' },
+                { from: 'danielson', to: 'thomson-houston', class: 'arrow' },
+                { from: 'esselius', to: 'carnegie', class: 'arrow' },
+                { from: 'palen', to: 'anaconda', class: 'arrow' },
+                { from: 'goransson', to: 'columbia', class: 'arrow' },
+                { from: 'westinghouse', to: 'asea', class: 'arrow' },
+                { from: 'thomson-houston', to: 'asea', class: 'arrow' },
+                { from: 'carnegie', to: 'sandviken', class: 'arrow' },
+                { from: 'columbia', to: 'sandviken', class: 'arrow' },
+                { from: 'anaconda', to: 'bolidens', class: 'arrow' },
+                { from: 'bolidens', to: 'dev-nationalism', class: 'arrow feedback' } // The Virtuous Circle
+            ];
+            
+            const svg = document.getElementById('connector-svg');
+            const mainDiagram = document.getElementById('main-diagram');
+
+            // Define arrowhead marker
+            const marker = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
+            marker.setAttribute('id', 'arrowhead');
+            marker.setAttribute('viewBox', '-0 -5 10 10');
+            marker.setAttribute('refX', 8);
+            marker.setAttribute('refY', 0);
+            marker.setAttribute('orient', 'auto');
+            marker.setAttribute('markerWidth', 5);
+            marker.setAttribute('markerHeight', 5);
+            marker.setAttribute('xoverflow', 'visible');
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', 'M 0,-5 L 10 ,0 L 0,5');
+            path.setAttribute('fill', var(--color-arrow));
+            marker.appendChild(path);
+            svg.appendChild(marker);
+
+            connections.forEach(conn => {
+                const fromNode = document.querySelector(`[data-node-id='${conn.from}']`);
+                const toNode = document.querySelector(`[data-node-id='${conn.to}']`);
+                if (fromNode && toNode) {
+                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    
+                    const pos1 = getNodeCenter(fromNode, mainDiagram);
+                    const pos2 = getNodeCenter(toNode, mainDiagram);
+                    
+                    // Simple straight line for demonstration
+                    // For feedback loop, curve the path
+                    let d;
+                    if (conn.class.includes('feedback')) {
+                        const midX = (pos1.x + pos2.x) / 2;
+                        const midY = mainDiagram.offsetHeight - 20; // Arc downwards
+                        d = `M ${pos1.x} ${pos1.y} Q ${midX} ${midY}, ${pos2.x} ${pos2.y}`;
+                    } else {
+                        d = `M ${pos1.x} ${pos1.y} L ${pos2.x} ${pos2.y}`;
+                    }
+
+                    line.setAttribute('d', d);
+                    line.setAttribute('class', conn.class);
+                    svg.appendChild(line);
+                }
+            });
+        });
+        
+        function getNodeCenter(node, container) {
+            const nodeRect = node.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+            return {
+                x: nodeRect.left + nodeRect.width / 2 - containerRect.left,
+                y: nodeRect.top + nodeRect.height / 2 - containerRect.top
+            };
+        }
+    </script>
+</body>
+</html>

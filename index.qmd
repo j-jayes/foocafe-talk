@@ -28,13 +28,10 @@ favicon: "assets/favicon.ico"
 execute: 
   eval: true
   echo: false
-# bibliography: references.bib
+bibliography: references.bib
 
 
 ---
-
-
-
 
 ## Agenda
 
@@ -51,7 +48,7 @@ execute:
 
 - PhD student in Economic History at Lund
 
-- Work on economic development in Sweden and tools to make data accessible
+- Work on economic development in Sweden and tools to turn archival data into stories
 
 - Work part time as a data scientist at [Codera Analytics](https://codera.co.za/)
 
@@ -115,9 +112,271 @@ Versus the first industrializing country 🇬🇧
 
 ## Why did Sweden become rich?
 
+. . .
 
+```{mermaid}
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    /* Dark2 palette */
+    "ganttCritTaskColor": "#1b9e77",        /* Phase 1 */
+    "ganttCritTaskTextColor": "#ffffff",
+    "ganttCritTaskBorderColor": "#1b9e77",
+
+    "ganttActiveTaskColor": "#d95f02",      /* Phase 2 */
+    "ganttActiveTaskTextColor": "#ffffff",
+    "ganttActiveTaskBorderColor": "#d95f02",
+
+    "ganttDoneTaskColor": "#7570b3",        /* Phase 3 */
+    "ganttDoneTaskTextColor": "#ffffff",
+    "ganttDoneTaskBorderColor": "#7570b3",
+
+    "lineColor": "#888",
+    "primaryColor": "#f5f5f5",
+    "primaryBorderColor": "#888",
+    "fontSize": "14px"
+  }
+}}%%
+
+gantt
+  title Sweden's Economic Development c. 1850–1975
+  dateFormat  YYYY
+  axisFormat  %Y
+
+  %% Milestones (neutral)
+  section Milestones
+  Second Industrial Revolution begins :milestone, M1, 1890, 0d
+  Post-war reconstruction era starts  :milestone, M2, 1945, 0d
+  Swedish Golden Age winds down       :milestone, M3, 1975, 0d
+
+  %% Phase 1 -> tag: crit (teal)
+  section Foundations and First Industrial Wave
+  Agrarian reforms and institutions   :crit, A1, 1820, 1870
+  Export-led growth timber iron oats  :crit, A2, 1850, 1890
+  National railway build-out state-led:crit, A3, 1855, 1895
+
+  %% Phase 2 -> tag: active (orange)
+  section Second Industrial Revolution
+  Rise of engineering multinationals ASEA SKF Ericsson :active, B1, 1890, 1925
+  American technology transfer learning-returning engineers :active, B2, 1900, 1935
+  Taylorist methods diffuse           :active, B3, 1910, 1935
+  US FDI and mass-production plants   :active, B4, 1910, 1930
+
+  %% Phase 3 -> tag: done (purple)
+  section Golden Age and the Swedish Model
+  Post-war boom                       :done, C1, 1945, 1965
+  Swedish Model consolidates          :done, C2, 1950, 1975
+  Fordism at scale                    :done, C3, 1950, 1970
+
+
+```
+
+## Why did Sweden become rich?
+
+### Sweden's Electrification
+
+::::{.columns}
+
+:::{.column width=50%}
+
+![Income shares from @bengtsson2021WhatHappenedIncomes and rural electrification rates from @vattenfall1948ProcentuelltAntalElektrifierade](figures/00-electrification_and_inequality_line_and_stacked_bar_secondary_axis.png){width=600}
+
+:::
+
+:::{.column width=50%}
+
+![](figures/2IR_1.JPG){.fragment}
+
+![](figures/2IR_2.JPG){.fragment}
+
+
+:::
+
+::::
+
+:::{.notes}
+
+So why do we care about Sweden as a case study when we think about technological transformations? 
+
+
+there are at least two reasons; 1 - Sweden was a fast adopter of electricity. After Jonas Wenström discovered three phase current in the late 19th century, Sweden rapidly electrified - with the electrification of rural areas advancing rapdily between 1900 and 1921, when the Western line - an important part of the grid, was completed. 
+
+Second, Sweden in the early 20th century was undergoing a levelling in terms of inequality; we can see that the share of income going to to the top decile of the income distribution declined - so it is an intersting time with a great levelling taking place. 
+
+Further, electrification as a general purpose technology drastically changed that way that we worked and lived; agricultural tasks that used to be very labour intensive were mechanised and then electrified, freeing up labour to move in to factories - which also were completely transformed by the electric motor, improving the quality of the jobs in the factory compared to the risks of belt drives from a central drive shaft, and allowing modular factory production, running only some machines at a time. 
+
+:::
+
+## Why did Sweden become rich?
+
+To answer the question of why Sweden became rich, we need to use source material from the time. 
+
+::: {.columns}
+::: {.column width=33%}
+
+```{r}
+knitr::include_graphics(here::here("assets/reading_ransom.jpg"))
+```
+
+
+
+:::
+::: {.column width=33%}
+
+```{r}
+knitr::include_graphics(here::here("assets/Electrolux_1950_page_5.jpeg"))
+```
+
+
+:::
+::: {.columnwidth=33%}
+
+```{r}
+knitr::include_graphics(here::here("assets/vem_page copy.png"))
+```
+
+:::
+::: 
 
 # Messy Biographies to Clean Data{visibility="uncounted" #sec-structuring-data background-color="#1b9e77"}
 
 
+
+## Who is who?
+
+:::: {.columns}
+
+::: {.column width="70%"}
+
+Vem är Vem? is a **Swedish biographical encyclopedia** that was published in two editions of five volumes each in 1945–1950 and 1962–1968 by Bokförlaget Vem är Vem.
+
+The intention was, according to the publishers, to draw attention **to people who were at the height of their activities**, even if they were younger, in influential or otherwise noted positions in different areas.
+
+- Biographies and career trajectories of ~ 75,000 individuals!
+
+- 8 of the 10 volumes are digitized by librarians in Uppsala – thank you <3
+
+:::
+
+::: {.column width="5%"}
+
+:::
+
+::: {.column width="25%"}
+
+![](assets/vem_cover.png){fig-align="center" width=100%}
+
+:::
+
+::::
+
+## Vem är Vem? Volumes
+
+![](assets/who-is-who-volumes.png){fig-align="center" width=100%}
+
+```{r}
+#| eval: false
+library(tidyverse)
+theme_set(theme_light())
+library(ggtext)
+library(showtext)
+font_add_google("IBM Plex Mono", "ibm")
+showtext_auto(enable = TRUE)
+
+# Create a tibble from the JSON data
+books <- tibble(
+  book_name = c("Skåne", "Stockholm", "Svealand", "The Götaland region except Skåne", "Skåne", "Norrland", "Stockholm", "The Götaland region except Skåne", "Who is who in indsutry and business?"),
+  year = c(1948, 1962, 1964, 1965, 1966, 1968, 1945, 1948, 1945),
+  pages = c(624, 1498, 945, 1203, 952, 1340, 1044, 1075, 625),
+  volume = c(1, 2, 2, 2, 2, 2, 1, 1, 3)
+) 
+
+books <- books %>%
+    mutate(name = str_c(book_name, " - ", year),
+            name = fct_reorder(name, pages),
+            records = pages * 8) %>%
+            mutate(volume = case_when(
+                volume == 1 ~ "1945–1950", 
+                volume == 2 ~"1962–1968",
+                TRUE ~ "Who is who in indsutry and business?")
+            ) %>%
+    select(name, records, volume) 
+
+# books %>% summarise(records = sum(records))
+
+# Create the ggplot visualization
+ggplot(books, aes(x = records, y = name, fill = factor(volume))) +
+  geom_col(alpha = .8) +
+  labs(x = "Number of biographies", y = "Book volume",
+  title = "Number of biographies in Vem är Vem?",
+  fill = "Edition") +
+  scale_x_continuous(labels = scales::number_format()) +
+  scale_fill_manual(values = c("#2B8CBE", "#be5d2b", "midnightblue"))  +
+    theme(plot.title.position = "plot") +
+    theme(legend.position = "bottom") +
+    theme(text = element_text(family = "ibm", size = 24))
+
+ggsave("assets/who-is-who-volumes.png", width = 6, height = 4, units = "in", dpi = 300)
+```
+
+
+## Vem är Vem? Example page
+
+![](assets/vem_page.png){fig-align="center" width=100%}
+
+## Vem är Vem? Example biography
+
+![](assets/vem_page.png){fig-align="center" width=100%}
+
+
+## Vem är Karl Lund?
+
+[Lund, Karl Gustaf]{style="background-color: #b0c4de"}, [chief engineer]{style="background-color: #d2b48c"}, [born on July 22, 1893]{style="background-color: #ff8c69"}, [in Hille, Gävle County]{style="background-color: #90ee90"}, Sweden, son of [clerk Ferdinand L. and Maria Andersson]{style="background-color: #9370db"}. Married in 1936 to [Sigrid Johansson]{style="background-color: #ffadc1"}. Children: [Ingvar (born 1938)]{style="background-color: #ffdead"}, [Lennart (born 1942)]{style="background-color: #ffdead"}. — Graduated from [Bergsskolan]{style="background-color: #afeeee"} in Filipstad in 1917, specialized studies at the [Royal Institute of Technology (KTH)]{style="background-color: #afeeee"} from 1920 to 1922, studied at the [Institute of Metallurgy]{style="background-color: #afeeee"} and [Stockholm University]{style="background-color: #afeeee"} in 1921-1922. Chemist at [Strömsnäs Järnverks A-B]{style="background-color: #98fb98"} in Degerfors from 1918 to 1920, metallurgist and chemist at [Westinghouse Electric & Manufacturing Co.]{style="background-color: #98fb98"} in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at [Laclede Steel Co.]{style="background-color: #98fb98"} in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at [A-B Iggesunds Bruk]{style="background-color: #98fb98"} from 1929 to 1931, site manager at [Gunnebo Bruks Nya A-B, Varbergsverket]{style="background-color: #98fb98"}, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of [Varbergs Sparbank]{style="background-color: #ffdab9"}, employer representative in the district council of the county labor board, member of the board of [Varbergs Luftskyddsförening (Varberg Air Protection Association)]{style="background-color: #ffdab9"}, secretary of [Varbergs Högerförening (Varberg Conservative Association)]{style="background-color: #ffdab9"}, chairman of the railway sick fund, and [Plant Society for Small Bird Friends]{style="background-color: #ffdab9"}. 
+
+## Vem är Karl Lund?
+
+Traveled to [Germany]{style="background-color: #e6e6fa"} in 1921, 1923, 1930, and 1936, [Denmark]{style="background-color: #e6e6fa"}, [Czechoslovakia]{style="background-color: #e6e6fa"} in 1921, 1922, and 1923, [Austria]{style="background-color: #e6e6fa"} in 1921, and the [USA]{style="background-color: #e6e6fa"} from 1923 to 1929. Writings: "Some fundamental factors for obtaining sharp thermal curves" (Transactions of the American Society for Steel Treating, co-authored with C. Benedicks and W. H. Dearden, 1925), "Contemporary production of saw blades, circular saws, and machine knives" (Timber Industry, 1931). Hobbies: [hunting]{style="background-color: #ffd700"} and [fishing]{style="background-color: #ffd700"}.
+
+##
+
+![](assets/tidy.jpg)
+
+# How can we `structure` the data?{#sec-structure background-color="#1C9E77" visibility="uncounted"}
+
+## NLP challenges
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<br>
+
+- Many abbreviations and contractions
+    - DOB: "f\.\\s*(\\d{2})\\/(\\d{2})/(\\d{2})"
+    - Gävleborg County: "Gävleb. l."
+
+- Similar structure for each entry but not exactly the same information in the same order
+
+
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+![](assets/Karl_Lund_crop.png){fig-align="center"}
+
+:::
+
+::::
+
+
+
 # Classification of occupational titles{visibility="uncounted" #sec-structuring-data background-color="#1b9e77"}
+
+## References{visibility="uncounted"}
+
+::: {#refs}
+
+:::
+

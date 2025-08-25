@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Jonathan Jayes">
-  <meta name="dcterms.date" content="2025-08-24">
+  <meta name="dcterms.date" content="2025-08-25">
   <title>Messy Biographies to Clean Data - Structuring Text with LLMs and Pydantic</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -30,7 +30,27 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -321,6 +341,9 @@
       margin-right: 0; 
     }
   </style>
+  <script src="index_files/libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="index_files/libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="index_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
   <link rel="shortcut icon" href="assets/favicon.ico">
 </head>
 <body class="quarto-light">
@@ -339,7 +362,7 @@ Jonathan Jayes
 </div>
 </div>
 
-  <p class="date">2025-08-24</p>
+  <p class="date">2025-08-25</p>
 </section>
 <section id="agenda" class="slide level2">
 <h2>Agenda</h2>
@@ -355,7 +378,7 @@ Jonathan Jayes
 <div class="column">
 <ul>
 <li><p>PhD student in Economic History at Lund</p></li>
-<li><p>Work on economic development in Sweden and tools to make data accessible</p></li>
+<li><p>Work on economic development in Sweden and tools to turn archival data into stories</p></li>
 <li><p>Work part time as a data scientist at <a href="https://codera.co.za/">Codera Analytics</a></p></li>
 <li><p>From South Africa originally</p></li>
 </ul>
@@ -424,25 +447,240 @@ Jonathan Jayes
 </div>
 </div>
 <div class="fragment">
-<p>Versus the United Kingdom</p>
+<p>Versus the first industrializing country 🇬🇧</p>
 </div>
 </section>
 <section id="why-did-sweden-become-rich" class="slide level2">
 <h2>Why did Sweden become rich?</h2>
+<div class="fragment">
+<div class="cell" data-reveal="true" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    /* Dark2 palette */
+    "ganttCritTaskColor": "#1b9e77",        /* Phase 1 */
+    "ganttCritTaskTextColor": "#ffffff",
+    "ganttCritTaskBorderColor": "#1b9e77",
+
+    "ganttActiveTaskColor": "#d95f02",      /* Phase 2 */
+    "ganttActiveTaskTextColor": "#ffffff",
+    "ganttActiveTaskBorderColor": "#d95f02",
+
+    "ganttDoneTaskColor": "#7570b3",        /* Phase 3 */
+    "ganttDoneTaskTextColor": "#ffffff",
+    "ganttDoneTaskBorderColor": "#7570b3",
+
+    "lineColor": "#888",
+    "primaryColor": "#f5f5f5",
+    "primaryBorderColor": "#888",
+    "fontSize": "14px"
+  }
+}}%%
+
+gantt
+  title Sweden's Economic Development c. 1850–1975
+  dateFormat  YYYY
+  axisFormat  %Y
+
+  %% Milestones (neutral)
+  section Milestones
+  Second Industrial Revolution begins :milestone, M1, 1890, 0d
+  Post-war reconstruction era starts  :milestone, M2, 1945, 0d
+  Swedish Golden Age winds down       :milestone, M3, 1975, 0d
+
+  %% Phase 1 -&gt; tag: crit (teal)
+  section Foundations and First Industrial Wave
+  Agrarian reforms and institutions   :crit, A1, 1820, 1870
+  Export-led growth timber iron oats  :crit, A2, 1850, 1890
+  National railway build-out state-led:crit, A3, 1855, 1895
+
+  %% Phase 2 -&gt; tag: active (orange)
+  section Second Industrial Revolution
+  Rise of engineering multinationals ASEA SKF Ericsson :active, B1, 1890, 1925
+  American technology transfer learning-returning engineers :active, B2, 1900, 1935
+  Taylorist methods diffuse           :active, B3, 1910, 1935
+  US FDI and mass-production plants   :active, B4, 1910, 1930
+
+  %% Phase 3 -&gt; tag: done (purple)
+  section Golden Age and the Swedish Model
+  Post-war boom                       :done, C1, 1945, 1965
+  Swedish Model consolidates          :done, C2, 1950, 1975
+  Fordism at scale                    :done, C3, 1950, 1970
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="why-did-sweden-become-rich-1" class="slide level2">
+<h2>Why did Sweden become rich?</h2>
+<h3 id="swedens-electrification">Sweden’s Electrification</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/00-electrification_and_inequality_line_and_stacked_bar_secondary_axis.png" width="600"></p>
+<figcaption>Income shares from <span class="citation" data-cites="bengtsson2021WhatHappenedIncomes">Bengtsson and Molinder (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> and rural electrification rates from <span class="citation" data-cites="vattenfall1948ProcentuelltAntalElektrifierade">Vattenfall (<a href="#/references" role="doc-biblioref" onclick="">1948</a>)</span></figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figures/2IR_1.JPG" class="fragment"></p>
+<p><img data-src="figures/2IR_2.JPG" class="fragment"></p>
+</div></div>
+<aside class="notes">
+<p>So why do we care about Sweden as a case study when we think about technological transformations?</p>
+<p>there are at least two reasons; 1 - Sweden was a fast adopter of electricity. After Jonas Wenström discovered three phase current in the late 19th century, Sweden rapidly electrified - with the electrification of rural areas advancing rapdily between 1900 and 1921, when the Western line - an important part of the grid, was completed.</p>
+<p>Second, Sweden in the early 20th century was undergoing a levelling in terms of inequality; we can see that the share of income going to to the top decile of the income distribution declined - so it is an intersting time with a great levelling taking place.</p>
+<p>Further, electrification as a general purpose technology drastically changed that way that we worked and lived; agricultural tasks that used to be very labour intensive were mechanised and then electrified, freeing up labour to move in to factories - which also were completely transformed by the electric motor, improving the quality of the jobs in the factory compared to the risks of belt drives from a central drive shaft, and allowing modular factory production, running only some machines at a time.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-did-sweden-become-rich-2" class="slide level2">
+<h2>Why did Sweden become rich?</h2>
+<p>To answer the question of why Sweden became rich, we need to use source material from the time.</p>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="assets/reading_ransom.jpg" width="301"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="assets/Electrolux_1950_page_5.jpeg" width="1260"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="{.columnwidth=33%}">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="assets/vem_page%20copy.png" width="408"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section></section>
+<section>
 <section id="sec-structuring-data" class="title-slide slide level1 center" data-visibility="uncounted" data-background-color="#1b9e77">
 <h1>Messy Biographies to Clean Data</h1>
 
 </section>
+<section id="who-is-who" class="slide level2">
+<h2>Who is who?</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p>Vem är Vem? is a <strong>Swedish biographical encyclopedia</strong> that was published in two editions of five volumes each in 1945–1950 and 1962–1968 by Bokförlaget Vem är Vem.</p>
+<p>The intention was, according to the publishers, to draw attention <strong>to people who were at the height of their activities</strong>, even if they were younger, in influential or otherwise noted positions in different areas.</p>
+<ul>
+<li><p>Biographies and career trajectories of ~ 75,000 individuals!</p></li>
+<li><p>8 of the 10 volumes are digitized by librarians in Uppsala – thank you &lt;3</p></li>
+</ul>
+</div><div class="column" style="width:5%;">
 
+</div><div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/vem_cover.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="vem-är-vem-volumes" class="slide level2">
+<h2>Vem är Vem? Volumes</h2>
+
+<img data-src="assets/who-is-who-volumes.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="vem-är-vem-example-page" class="slide level2">
+<h2>Vem är Vem? Example page</h2>
+
+<img data-src="assets/vem_page.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="vem-är-karl-lund" class="slide level2">
+<h2>Vem är Karl Lund?</h2>
+<p><span style="background-color: #b0c4de">Lund, Karl Gustaf</span>, <span style="background-color: #d2b48c">chief engineer</span>, <span style="background-color: #ff8c69">born on July 22, 1893</span>, <span style="background-color: #90ee90">in Hille, Gävle County</span>, Sweden, son of <span style="background-color: #9370db">clerk Ferdinand L. and Maria Andersson</span>. Married in 1936 to <span style="background-color: #ffadc1">Sigrid Johansson</span>. Children: <span style="background-color: #ffdead">Ingvar (born 1938)</span>, <span style="background-color: #ffdead">Lennart (born 1942)</span>. — Graduated from <span style="background-color: #afeeee">Bergsskolan</span> in Filipstad in 1917, specialized studies at the <span style="background-color: #afeeee">Royal Institute of Technology (KTH)</span> from 1920 to 1922, studied at the <span style="background-color: #afeeee">Institute of Metallurgy</span> and <span style="background-color: #afeeee">Stockholm University</span> in 1921-1922. Chemist at <span style="background-color: #98fb98">Strömsnäs Järnverks A-B</span> in Degerfors from 1918 to 1920, metallurgist and chemist at <span style="background-color: #98fb98">Westinghouse Electric &amp; Manufacturing Co.</span> in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at <span style="background-color: #98fb98">Laclede Steel Co.</span> in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at <span style="background-color: #98fb98">A-B Iggesunds Bruk</span> from 1929 to 1931, site manager at <span style="background-color: #98fb98">Gunnebo Bruks Nya A-B, Varbergsverket</span>, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of <span style="background-color: #ffdab9">Varbergs Sparbank</span>, employer representative in the district council of the county labor board, member of the board of <span style="background-color: #ffdab9">Varbergs Luftskyddsförening (Varberg Air Protection Association)</span>, secretary of <span style="background-color: #ffdab9">Varbergs Högerförening (Varberg Conservative Association)</span>, chairman of the railway sick fund, and <span style="background-color: #ffdab9">Plant Society for Small Bird Friends</span>.</p>
+</section>
+<section id="vem-är-karl-lund-1" class="slide level2">
+<h2>Vem är Karl Lund?</h2>
+<p>Traveled to <span style="background-color: #e6e6fa">Germany</span> in 1921, 1923, 1930, and 1936, <span style="background-color: #e6e6fa">Denmark</span>, <span style="background-color: #e6e6fa">Czechoslovakia</span> in 1921, 1922, and 1923, <span style="background-color: #e6e6fa">Austria</span> in 1921, and the <span style="background-color: #e6e6fa">USA</span> from 1923 to 1929. Writings: “Some fundamental factors for obtaining sharp thermal curves” (Transactions of the American Society for Steel Treating, co-authored with C. Benedicks and W. H. Dearden, 1925), “Contemporary production of saw blades, circular saws, and machine knives” (Timber Industry, 1931). Hobbies: <span style="background-color: #ffd700">hunting</span> and <span style="background-color: #ffd700">fishing</span>.</p>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+
+<img data-src="assets/tidy.jpg" class="r-stretch"></section></section>
+<section>
+<section id="sec-structure" class="title-slide slide level1 center" data-background-color="#1C9E77" data-visibility="uncounted">
+<h1>How can we <code>structure</code> the data?</h1>
+
+</section>
+<section id="nlp-challenges" class="slide level2">
+<h2>NLP challenges</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><br></p>
+<ul>
+<li>Many abbreviations and contractions
+<ul>
+<li>DOB: “f.\s*(\d{2})\/(\d{2})/(\d{2})”</li>
+<li>Gävleborg County: “Gävleb. l.”</li>
+</ul></li>
+<li>Similar structure for each entry but not exactly the same information in the same order</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/Karl_Lund_crop.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div></div>
+</section></section>
+<section>
 <section id="sec-structuring-data" class="title-slide slide level1 center" data-visibility="uncounted" data-background-color="#1b9e77">
 <h1>Classification of occupational titles</h1>
+
+</section>
+<section id="references" class="slide level2 smaller scrollable" data-visibility="uncounted">
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bengtsson2021WhatHappenedIncomes" class="csl-entry" role="listitem">
+Bengtsson, Erik, and Jakob Molinder. 2021. <span>“What <span>Happened</span> to the <span>Incomes</span> of the <span>Rich</span> During the <span>Great Levelling</span>? <span>Evidence</span> from <span class="nocase">Swedish Individual-level Data</span>, 1909–1950.”</span> <em>What Happened to the Incomes of the Rich During the Great Levelling? Evidence from Swedish Individual-Level Data, 1909–1950</em>, Lund <span>Papers</span> in <span>Economic History</span>,.
+</div>
+<div id="ref-vattenfall1948ProcentuelltAntalElektrifierade" class="csl-entry" role="listitem">
+Vattenfall. 1948. <span>“Procentuellt Antal Elektrifierade Hush<span>å</span>ll.”</span> Vattenfall.
+</div>
+</div>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
