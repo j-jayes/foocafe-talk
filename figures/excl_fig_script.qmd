@@ -1,0 +1,577 @@
+
+```{r}
+# Plot comparing Britain and Sweden with national flag colors
+# Sweden: Blue (#006aa7), Britain: Red (#cf142b)
+
+df_tidy %>%
+    filter(year > 1800) %>%
+    mutate(
+        country_color = case_when(
+            country_code == "SWE" ~ "#006aa7",  # Swedish blue
+            country_code == "GBR" ~ "#cf142b",  # British red
+            TRUE ~ "grey80"
+        )
+    ) %>%
+    ggplot(aes(x = year, y = gdp_per_capita, group = country_code)) +
+    geom_line(aes(color = country_color), alpha = 0.1) +
+    geom_line(
+        data = . %>% filter(country_code %in% c("SWE", "GBR")),
+        aes(color = country_color),
+        size = 1.2,
+        alpha = 1
+    ) +
+    scale_color_identity() +
+    gghighlight(country_code %in% c("SWE", "GBR"), 
+                label_key = country_code,
+                use_direct_label = TRUE,
+                unhighlighted_params = list(alpha = 0.1, color = "grey80")) +
+    scale_y_log10() +
+    labs(
+        title = "Economic Development: Britain vs Sweden",
+        x = "Year",
+        y = "GDP per Capita (log scale)",
+        caption = "Data Source: Maddison Project Database\nColors represent national flag colors"
+    ) +
+    theme_minimal()
+```
+
+
+```{r}
+
+df_tidy %>%
+  filter(year > 1800) %>%
+  ggplot(aes(x = year, y = gdp_per_capita, group = country_code, color = country_code)) +
+  geom_line(alpha = 0.1) +
+  gghighlight(
+    country_code %in% c("SWE", "GBR"), 
+    label_key = country_code,
+    use_direct_label = TRUE,
+    unhighlighted_params = list(alpha = 0.1, color = "grey80")
+  ) +
+  scale_color_manual(
+    values = c("SWE" = "#006aa7", "GBR" = "#cf142b")
+  ) +
+  scale_y_log10() +
+  labs(
+    title = "Economic Development: Britain vs Sweden",
+    x = "Year",
+    y = "GDP per Capita (log scale)",
+    caption = "Data Source: Maddison Project Database\nColors represent national flag colors"
+  ) +
+  theme_minimal()
+
+```
+
+
+
+
+```{r}
+
+
+df_tidy %>%
+  filter(year > 1800) %>%
+  mutate(flag = if_else(country_code %in% c("sweden", "united_kingdom"), country_code, "Other")) %>%
+  ggplot(aes(x = year, y = gdp_per_capita, group = country_code, colour = flag)) +
+  geom_line() +
+  gghighlight(
+    country_code %in% c("sweden", "united_kingdom"),
+    use_direct_label = TRUE,
+    label_key = country_code,
+    unhighlighted_params = list(alpha = 0.15),  # fade others
+    keep_scales = TRUE
+  ) +
+  scale_colour_manual(values = c(sweden = "#006aa7", united_kingdom = "#cf142b", Other = "grey80")) +
+  scale_y_log10() +
+  labs(
+    title = "Economic Development: United Kingdom vs Sweden",
+    x = "Year",
+    y = "GDP per Capita (log scale)",
+    caption = "Data Source: Maddison Project Database\nColors represent national flag colors"
+  ) +
+  theme_minimal()
+
+
+```
+
+
+
+```{r}
+
+library(dplyr)
+library(ggplot2)
+library(gghighlight)
+
+# Period bands
+periods <- tibble::tibble(
+  xmin = c(1850, 1890),
+  xmax = c(1914, 1930),
+  period = c("Mass migration (1850–1914)", "Electrification (1890–1930)")
+)
+
+df_tidy %>%
+  filter(year > 1800) %>%
+  mutate(flag = if_else(country_code %in% c("sweden", "united_kingdom"), country_code, "Other")) %>%
+  ggplot(aes(x = year, y = gdp_per_capita, group = country_code, colour = flag)) +
+  # Background highlight bands
+  geom_rect(
+    data = periods,
+    aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf, fill = period),
+    inherit.aes = FALSE,
+    alpha = 0.12,
+    show.legend = FALSE
+  ) +
+  geom_line() +
+  gghighlight(
+    country_code %in% c("sweden", "united_kingdom"),
+    use_direct_label = TRUE,
+    label_key = country_code,
+    unhighlighted_params = list(alpha = 0.15),
+    keep_scales = TRUE
+  ) +
+  scale_colour_manual(values = c(sweden = "#006aa7", united_kingdom = "#cf142b", Other = "grey80")) +
+  # soft, neutral fills for bands
+  scale_fill_manual(values = c(
+    "Electrification (1890–1930)" = "#a9d6ff",
+    "Mass migration (1850–1914)"  = "#ffe5b4"
+  )) +
+  scale_y_log10() +
+  labs(
+    title = "Economic Development: United Kingdom vs Sweden",
+    x = "Year",
+    y = "GDP per Capita (log scale)",
+    caption = "Data Source: Maddison Project Database\nBands: mass migration (1850–1914), electrification (1890–1930)"
+  ) +
+  theme_minimal()
+
+```
+
+
+
+```{r}
+
+library(dplyr)
+library(ggplot2)
+library(gghighlight)
+library(tibble)
+
+# Period bands
+periods <- tibble(
+  xmin = c(1850, 1890),
+  xmax = c(1914, 1930),
+  period = c("Mass migration (1850–1914)", "Electrification (1890–1930)")
+)
+
+df_tidy %>%
+  filter(year > 1800) %>%
+  mutate(flag = if_else(country_code %in% c("sweden", "united_kingdom"),
+                        country_code, "Other")) %>%
+  ggplot(aes(x = year, y = gdp_per_capita, group = country_code)) +
+  # Background highlight bands (no colour mapped here)
+  geom_rect(
+    data = periods,
+    aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf, fill = period),
+    inherit.aes = FALSE,
+    alpha = 0.12,
+    show.legend = FALSE
+  ) +
+  # Lines get the colour mapping (so 'flag' is only required here)
+  geom_line(aes(colour = flag)) +
+  gghighlight(
+    country_code %in% c("sweden", "united_kingdom"),
+    use_direct_label = TRUE,
+    label_key = country_code,
+    unhighlighted_params = list(alpha = 0.15),
+    keep_scales = TRUE
+  ) +
+  scale_colour_manual(values = c(sweden = "#006aa7",
+                                 united_kingdom = "#cf142b",
+                                 Other = "grey80")) +
+  scale_fill_manual(values = c(
+    "Electrification (1890–1930)" = "#a9d6ff",
+    "Mass migration (1850–1914)"  = "#ffe5b4"
+  )) +
+  scale_y_log10() +
+  labs(
+    title = "Economic Development: United Kingdom vs Sweden",
+    x = "Year",
+    y = "GDP per Capita (log scale)",
+    caption = "Data Source: Maddison Project Database\nBands: mass migration (1850–1914), electrification (1890–1930)"
+  ) +
+  theme_minimal()
+
+```
+
+
+
+
+```{r}
+
+library(dplyr)
+library(ggplot2)
+library(gghighlight)
+library(tibble)
+
+# Period bands + dummy cols to satisfy gghighlight predicate
+periods <- tibble(
+  xmin = c(1850, 1890),
+  xmax = c(1914, 1930),
+  period = c("Mass migration (1850–1914)", "Electrification (1890–1930)"),
+  country_code = NA_character_,   # <-- dummy so predicate can run
+  flag = NA_character_            # <-- dummy so cloned aes won't choke
+)
+
+df_tidy %>%
+  filter(year > 1800) %>%
+  mutate(flag = if_else(country_code %in% c("sweden", "united_kingdom"),
+                        country_code, "Other")) %>%
+  ggplot(aes(x = year, y = gdp_per_capita, group = country_code)) +
+  # background bands (drawn first, behind lines)
+  geom_rect(
+    data = periods,
+    aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf, fill = period),
+    inherit.aes = FALSE,
+    alpha = 0.12,
+    show.legend = FALSE
+  ) +
+  # lines (colour mapping only here, not global)
+  geom_line(aes(colour = flag)) +
+  gghighlight(
+    country_code %in% c("sweden", "united_kingdom"),
+    use_direct_label = TRUE,
+    label_key = country_code,
+    unhighlighted_params = list(alpha = 0.15),
+    keep_scales = TRUE
+  ) +
+  scale_colour_manual(values = c(
+    sweden = "#006aa7",
+    united_kingdom = "#cf142b",
+    Other = "grey80"
+  )) +
+  scale_fill_manual(values = c(
+    "Electrification (1890–1930)" = "#a9d6ff",
+    "Mass migration (1850–1914)"  = "#ffe5b4"
+  )) +
+  scale_y_log10() +
+  labs(
+    title = "Economic Development: United Kingdom vs Sweden",
+    x = "Year",
+    y = "GDP per Capita (log scale)",
+    caption = "Data Source: Maddison Project Database\nBands: mass migration (1850–1914), electrification (1890–1930)"
+  ) +
+  theme_minimal()
+
+```
+
+
+
+
+```{r}
+
+df_tidy %>%
+  filter(year > 1800) %>%
+  mutate(flag = if_else(country_code %in% c("sweden", "united_kingdom"),
+                        country_code, "Other")) %>%
+  ggplot(aes(x = year, y = gdp_per_capita, group = country_code)) +
+  geom_line(aes(colour = flag)) +
+  gghighlight(
+    country_code %in% c("sweden", "united_kingdom"),
+    use_direct_label = TRUE,
+    label_key = country_code,
+    unhighlighted_params = list(alpha = 0.15),
+    keep_scales = TRUE
+  ) +
+  # add rects AFTER highlighting so they aren't cloned
+  annotate("rect",
+           xmin = 1850, xmax = 1914, ymin = -Inf, ymax = Inf,
+           alpha = 0.12) +
+  annotate("rect",
+           xmin = 1890, xmax = 1930, ymin = -Inf, ymax = Inf,
+           alpha = 0.12) +
+  scale_colour_manual(values = c(
+    sweden = "#006aa7",
+    united_kingdom = "#cf142b",
+    Other = "grey80"
+  )) +
+  scale_y_log10() +
+  labs(
+    title = "Economic Development: United Kingdom vs Sweden",
+    x = "Year",
+    y = "GDP per Capita (log scale)",
+    caption = "Data Source: Maddison Project Database\nBands: mass migration (1850–1914), electrification (1890–1930)"
+  ) +
+  theme_minimal()
+
+```
+
+
+## Sweden
+
+```{r}
+
+library(dplyr)
+library(ggplot2)
+library(gghighlight)
+
+df_tidy %>%
+    filter(year > 1800) %>%
+    mutate(flag = if_else(country_code %in% c("sweden", # "united_kingdom"
+    ),
+        country_code, "Other"
+    )) %>%
+    ggplot(aes(x = year, y = gdp_per_capita, group = country_code)) +
+    # Lines first
+    geom_line(aes(colour = flag)) +
+    # Highlight target countries
+    gghighlight(
+        country_code %in% c("sweden", #"united_kingdom"
+        ),
+        use_direct_label = TRUE,
+        label_key = country_code,
+        unhighlighted_params = list(alpha = 0.15),
+        keep_scales = TRUE
+    ) +
+    # Vertical markers AFTER highlighting so they aren't cloned
+    geom_vline(
+        xintercept = c(1850, 1914), # Mass migration
+        # linetype = "dashed",
+        linewidth = 0.4,
+        colour = "grey50",
+        alpha = 0.7,
+        inherit.aes = FALSE
+    ) +
+    geom_vline(
+        xintercept = c(1890, 1950), # Electrification
+        linetype = "dotdash",
+        linewidth = 0.4,
+        colour = "grey30",
+        alpha = 0.7,
+        inherit.aes = FALSE
+    ) +
+    scale_colour_manual(values = c(
+        sweden = "#006aa7",
+        # united_kingdom = "#cf142b",
+        Other = "grey80"
+    )) +
+    scale_y_log10(labels = scales::dollar_format()) +
+    labs(
+        # title = "Economic Development: United Kingdom vs Sweden",
+        x = "Year",
+        y = "GDP per Capita (log scale)",
+        caption = "Data Source: Maddison Project Database\nDashed: mass migration (1850–1914); Dot-dash: electrification (1890–1930)"
+    ) +
+    theme_minimal() +
+    ggsave("figures/economic_development_1.png", width = 8, height = 5, dpi = 300)
+
+
+```
+
+
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(gghighlight)
+
+df_tidy %>%
+    filter(year > 1800) %>%
+    mutate(flag = if_else(country_code %in% c("sweden", "united_kingdom"),
+        country_code, "Other"
+    )) %>%
+    ggplot(aes(x = year, y = gdp_per_capita, group = country_code)) +
+    # Lines first
+    geom_line(aes(colour = flag)) +
+    # Highlight target countries
+    gghighlight(
+        country_code %in% c("sweden", "united_kingdom"),
+        use_direct_label = TRUE,
+        label_key = country_code,
+        unhighlighted_params = list(alpha = 0.15),
+        keep_scales = TRUE
+    ) +
+    # Vertical markers AFTER highlighting so they aren't cloned
+    geom_vline(
+        xintercept = c(1850, 1914), # Mass migration
+        # linetype = "dashed",
+        linewidth = 0.4,
+        colour = "grey50",
+        alpha = 0.7,
+        inherit.aes = FALSE
+    ) +
+    geom_vline(
+        xintercept = c(1890, 1950), # Electrification
+        linetype = "dotdash",
+        linewidth = 0.4,
+        colour = "grey30",
+        alpha = 0.7,
+        inherit.aes = FALSE
+    ) +
+    scale_colour_manual(values = c(
+        sweden = "#006aa7",
+        united_kingdom = "#cf142b",
+        Other = "grey80"
+    )) +
+    scale_y_log10(labels = scales::dollar_format()) +
+    labs(
+        # title = "Economic Development: United Kingdom vs Sweden",
+        x = "Year",
+        y = "GDP per Capita (log scale)",
+        caption = "Data Source: Maddison Project Database\nDashed: mass migration (1850–1914); Dot-dash: electrification (1890–1930)"
+    ) +
+    theme_minimal() +
+    ggsave("figures/economic_development_2.png", width = 8, height = 5, dpi = 300)
+
+
+```
+
+
+
+
+```{r}
+# --- Packages ---
+library(dplyr)
+library(ggplot2)
+library(stringr)
+library(countrycode)
+
+# --- Output folder ---
+dir.create("figures", showWarnings = FALSE, recursive = TRUE)
+
+# --- Helper: robust World Bank region from country_code ---
+# Tries ISO3 first; if that fails, guesses a country name from snake_case & maps that.
+wb_region_from_code <- function(code_vec) {
+    iso_try <- countrycode(code_vec, origin = "iso3c", destination = "region", warn = FALSE)
+    name_try <- countrycode(str_to_title(gsub("_", " ", code_vec)),
+        origin = "country.name", destination = "region", warn = FALSE
+    )
+    out <- ifelse(is.na(iso_try), name_try, iso_try)
+    ifelse(is.na(out), "Other", out)
+}
+
+# --- Normalize booleans for Sweden & UK regardless of code style ---
+is_sweden <- function(x) tolower(x) %in% c("swe", "se", "sweden")
+is_uk <- function(x) tolower(x) %in% c("gbr", "gb", "united_kingdom", "uk", "great_britain")
+
+# --- Base data (post-1750) with helpers ---
+df_base <- df_tidy %>%
+    filter(year > 1750) %>%
+    mutate(
+        wb_region   = wb_region_from_code(country_code),
+        sweden_bool = is_sweden(country_code),
+        uk_bool     = is_uk(country_code)
+    )
+
+# --- Common theming / scales ---
+base_theme <- theme_minimal()
+y_scale <- scale_y_log10(labels = scales::dollar_format(), limits = c(500, NA))
+
+# -------------------------------------------------------------------
+# 1) Sweden only
+# -------------------------------------------------------------------
+p1 <- df_base %>%
+    filter(sweden_bool) %>%
+    ggplot(aes(x = year, y = gdp_per_capita, group = country_code)) +
+    geom_line(color = "#006aa7", linewidth = 1.1) +
+    y_scale +
+    labs(
+        x = "Year", y = "GDP per Capita (log scale)",
+        title = "Sweden",
+        caption = "Data: Maddison Project Database"
+    ) +
+    base_theme
+
+ggsave("figures/ed_step1_sweden.png", p1, width = 8, height = 5, dpi = 300)
+
+# -------------------------------------------------------------------
+# 2) Sweden vs everyone (others greyed)
+# -------------------------------------------------------------------
+p2 <- ggplot() +
+    geom_line(
+        data = df_base %>% filter(!sweden_bool),
+        aes(x = year, y = gdp_per_capita, group = country_code),
+        color = "grey80", alpha = 0.2
+    ) +
+    geom_line(
+        data = df_base %>% filter(sweden_bool),
+        aes(x = year, y = gdp_per_capita),
+        color = "#006aa7", linewidth = 1.1
+    ) +
+    y_scale +
+    labs(
+        x = "Year", y = "GDP per Capita (log scale)",
+        title = "Sweden vs Everyone",
+        caption = "Data: Maddison Project Database"
+    ) +
+    base_theme
+
+ggsave("figures/ed_step2_sweden_vs_all.png", p2, width = 8, height = 5, dpi = 300)
+
+# -------------------------------------------------------------------
+# 3) Sweden vs Europe (World Bank region = 'Europe & Central Asia')
+# -------------------------------------------------------------------
+europe_label <- "Europe & Central Asia" # countrycode::codelist$region (World Bank WDI 7 regions)
+
+p3 <- ggplot() +
+    # Everyone faint
+    geom_line(
+        data = df_base,
+        aes(year, gdp_per_capita, group = country_code),
+        color = "grey85", alpha = 0.15
+    ) +
+    # Europe medium
+    geom_line(
+        data = df_base %>% filter(wb_region == europe_label & !sweden_bool),
+        aes(year, gdp_per_capita, group = country_code),
+        color = "grey50", alpha = 0.6
+    ) +
+    # Sweden strong
+    geom_line(
+        data = df_base %>% filter(sweden_bool),
+        aes(year, gdp_per_capita),
+        color = "#006aa7", linewidth = 1.2
+    ) +
+    y_scale +
+    labs(
+        x = "Year", y = "GDP per Capita (log scale)",
+        title = "Sweden vs Europe (World Bank Region)",
+        subtitle = "Europe = World Bank ‘Europe & Central Asia’ grouping",
+        caption = "Data: Maddison Project Database; Regions: World Bank via countrycode"
+    ) +
+    base_theme
+
+ggsave("figures/ed_step3_sweden_vs_europe.png", p3, width = 8, height = 5, dpi = 300)
+
+# -------------------------------------------------------------------
+# 4) Sweden + United Kingdom vs everyone
+# -------------------------------------------------------------------
+p4 <- ggplot() +
+    # Everyone faint
+    geom_line(
+        data = df_base %>% filter(!sweden_bool & !uk_bool),
+        aes(year, gdp_per_capita, group = country_code),
+        color = "grey80", alpha = 0.2
+    ) +
+    # UK
+    geom_line(
+        data = df_base %>% filter(uk_bool),
+        aes(year, gdp_per_capita),
+        color = "#cf142b", linewidth = 1.05
+    ) +
+    # Sweden
+    geom_line(
+        data = df_base %>% filter(sweden_bool),
+        aes(year, gdp_per_capita),
+        color = "#006aa7", linewidth = 1.15
+    ) +
+    y_scale +
+    labs(
+        x = "Year", y = "GDP per Capita (log scale)",
+        title = "Sweden & United Kingdom vs Everyone",
+        caption = "Data: Maddison Project Database"
+    ) +
+    base_theme
+
+ggsave("figures/ed_step4_sweden_uk_vs_all.png", p4, width = 8, height = 5, dpi = 300)
+
+```
+
+

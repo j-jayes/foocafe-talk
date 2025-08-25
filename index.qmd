@@ -35,11 +35,22 @@ bibliography: references.bib
 
 ## Agenda
 
+
 1. Whirlwind tour through Swedish economic history
 
 2. Messy Biographies to Clean Data
 
 3. Classification of occupational titles
+
+. . . 
+
+### Goals
+
+1. Teach you something you didn't know about Sweden's economic history
+
+2. Show how we make use of modern data science tools in academia
+
+3. Share some learnings from academia RE off the shelf software
 
 ## About me 
 
@@ -101,16 +112,16 @@ Versus the rest of the world
 :::{.center}
 
 ```{r}
-knitr::include_graphics("figures/ed_step4_sweden_uk_vs_all.png")
+knitr::include_graphics("figures/ed_step5_sweden_uk_sa_vs_all.png")
 ```
 
 :::
 
 . . .
 
-Versus the first industrializing country 🇬🇧
+Versus the first industrializing country 🇬🇧 and South Africa TODO flag
 
-## Why did Sweden become rich?
+## Why did Sweden become rich🇸🇪?
 
 . . .
 
@@ -171,9 +182,13 @@ gantt
 
 ```
 
-## Why did Sweden become rich?
+. . .
 
-### Sweden's Electrification
+Many reasons!!
+
+## Why did Sweden become rich🇸🇪?
+
+### My preferred explanation: Sweden's Electrification
 
 ::::{.columns}
 
@@ -207,36 +222,49 @@ Further, electrification as a general purpose technology drastically changed tha
 
 :::
 
-## Why did Sweden become rich?
+## Why did Sweden become rich🇸🇪?
+
+### Learning and returning
+
+![](assets/learning_and_returning.png)
+
+## Why did Sweden become rich🇸🇪?
 
 To answer the question of why Sweden became rich, we need to use source material from the time. 
 
-::: {.columns}
+:::: {.columns}
+
 ::: {.column width=33%}
 
-```{r}
+<!-- ```{r}
 knitr::include_graphics(here::here("assets/reading_ransom.jpg"))
-```
+``` -->
 
+![](assets/reading_ransom.jpg){fig-align="center" width=100%}
 
 
 :::
+
 ::: {.column width=33%}
 
-```{r}
+<!-- ```{r}
 knitr::include_graphics(here::here("assets/Electrolux_1950_page_5.jpeg"))
-```
+``` -->
 
+![](assets/Electrolux_1950_page_5.jpeg){fig-align="center" width=100%}
 
 :::
-::: {.columnwidth=33%}
 
-```{r}
+::: {.column width=33%}
+
+<!-- ```{r}
 knitr::include_graphics(here::here("assets/vem_page copy.png"))
-```
+``` -->
 
+![](assets/vem_page copy.png){fig-align="center" width=100%}
 :::
-::: 
+
+:::: 
 
 # Messy Biographies to Clean Data{visibility="uncounted" #sec-structuring-data background-color="#1b9e77"}
 
@@ -326,16 +354,16 @@ ggsave("assets/who-is-who-volumes.png", width = 6, height = 4, units = "in", dpi
 
 ## Vem är Vem? Example biography
 
-![](assets/vem_page.png){fig-align="center" width=100%}
+![](assets/vem_page close-up.jpg){fig-align="center" width=100%}
 
 
 ## Vem är Karl Lund?
 
-[Lund, Karl Gustaf]{style="background-color: #b0c4de"}, [chief engineer]{style="background-color: #d2b48c"}, [born on July 22, 1893]{style="background-color: #ff8c69"}, [in Hille, Gävle County]{style="background-color: #90ee90"}, Sweden, son of [clerk Ferdinand L. and Maria Andersson]{style="background-color: #9370db"}. Married in 1936 to [Sigrid Johansson]{style="background-color: #ffadc1"}. Children: [Ingvar (born 1938)]{style="background-color: #ffdead"}, [Lennart (born 1942)]{style="background-color: #ffdead"}. — Graduated from [Bergsskolan]{style="background-color: #afeeee"} in Filipstad in 1917, specialized studies at the [Royal Institute of Technology (KTH)]{style="background-color: #afeeee"} from 1920 to 1922, studied at the [Institute of Metallurgy]{style="background-color: #afeeee"} and [Stockholm University]{style="background-color: #afeeee"} in 1921-1922. Chemist at [Strömsnäs Järnverks A-B]{style="background-color: #98fb98"} in Degerfors from 1918 to 1920, metallurgist and chemist at [Westinghouse Electric & Manufacturing Co.]{style="background-color: #98fb98"} in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at [Laclede Steel Co.]{style="background-color: #98fb98"} in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at [A-B Iggesunds Bruk]{style="background-color: #98fb98"} from 1929 to 1931, site manager at [Gunnebo Bruks Nya A-B, Varbergsverket]{style="background-color: #98fb98"}, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of [Varbergs Sparbank]{style="background-color: #ffdab9"}, employer representative in the district council of the county labor board, member of the board of [Varbergs Luftskyddsförening (Varberg Air Protection Association)]{style="background-color: #ffdab9"}, secretary of [Varbergs Högerförening (Varberg Conservative Association)]{style="background-color: #ffdab9"}, chairman of the railway sick fund, and [Plant Society for Small Bird Friends]{style="background-color: #ffdab9"}. 
+[Lund, Karl Gustaf]{style="background-color: #b0c4de"}, [chief engineer]{style="background-color: #d2b48c"}, [living in Varberg]{style="background-color: #d28ccdff"}, [born on July 22, 1893]{style="background-color: #ff8c69"}, [in Hille, Gävle County]{style="background-color: #e8ee90ff"}, Sweden, son of [clerk Ferdinand L. and Maria Andersson]{style="background-color: #9370db"}. Married in 1936 to [Sigrid Johansson]{style="background-color: #ffadc1"}. Children: [Ingvar (born 1938)]{style="background-color: #ffdead"}, [Lennart (born 1942)]{style="background-color: #ffdead"}. — Graduated from [Bergsskolan]{style="background-color: #afeeee"} in Filipstad in 1917, specialized studies at the [Royal Institute of Technology (KTH)]{style="background-color: #afeeee"} from 1920 to 1922, studied at the [Institute of Metallurgy]{style="background-color: #afeeee"} and [Stockholm University]{style="background-color: #afeeee"} in 1921-1922. Chemist at [Strömsnäs Järnverks A-B]{style="background-color: #98fb98"} in Degerfors from 1918 to 1920, metallurgist and chemist at [Westinghouse Electric & Manufacturing Co.]{style="background-color: #98fb98"} in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at [Laclede Steel Co.]{style="background-color: #98fb98"} in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at [A-B Iggesunds Bruk]{style="background-color: #98fb98"} from 1929 to 1931, site manager at [Gunnebo Bruks Nya A-B, Varbergsverket]{style="background-color: #98fb98"}, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of [Varbergs Sparbank]{style="background-color: #ffdab9"}, employer representative in the district council of the county labor board, member of the board of [Varbergs Luftskyddsförening (Varberg Air Protection Association)]{style="background-color: #ffdab9"}, secretary of [Varbergs Högerförening (Varberg Conservative Association)]{style="background-color: #ffdab9"}, chairman of the railway sick fund, and [Plant Society for Small Bird Friends]{style="background-color: #ffdab9"}. 
 
 ## Vem är Karl Lund?
 
-Traveled to [Germany]{style="background-color: #e6e6fa"} in 1921, 1923, 1930, and 1936, [Denmark]{style="background-color: #e6e6fa"}, [Czechoslovakia]{style="background-color: #e6e6fa"} in 1921, 1922, and 1923, [Austria]{style="background-color: #e6e6fa"} in 1921, and the [USA]{style="background-color: #e6e6fa"} from 1923 to 1929. Writings: "Some fundamental factors for obtaining sharp thermal curves" (Transactions of the American Society for Steel Treating, co-authored with C. Benedicks and W. H. Dearden, 1925), "Contemporary production of saw blades, circular saws, and machine knives" (Timber Industry, 1931). Hobbies: [hunting]{style="background-color: #ffd700"} and [fishing]{style="background-color: #ffd700"}.
+Traveled to [Germany]{style="background-color: #e6e6fa"} in 1921, 1923, 1930, and 1936, [Denmark]{style="background-color: #e6e6fa"}, [Czechoslovakia]{style="background-color: #e6e6fa"} in 1921, 1922, and 1923, [Austria]{style="background-color: #e6e6fa"} in 1921, and the [USA]{style="background-color: #e6e6fa"} from 1923 to 1929. Writings: ["Some fundamental factors for obtaining sharp thermal curves" (Transactions of the American Society for Steel Treating, co-authored with C. Benedicks and W. H. Dearden, 1925)]{style="background-color: #74b7ffff"}, ["Contemporary production of saw blades, circular saws, and machine knives" (Timber Industry, 1931)]{style="background-color: #74b7ffff"}. Hobbies: [hunting]{style="background-color: #ffd700"} and [fishing]{style="background-color: #ffd700"}.
 
 ##
 
@@ -343,7 +371,9 @@ Traveled to [Germany]{style="background-color: #e6e6fa"} in 1921, 1923, 1930, an
 
 # How can we `structure` the data?{#sec-structure background-color="#1C9E77" visibility="uncounted"}
 
-## NLP challenges
+## Why does a rules based approach not work?
+
+### NLP challenges
 
 :::: {.columns}
 
@@ -370,9 +400,160 @@ Traveled to [Germany]{style="background-color: #e6e6fa"} in 1921, 1923, 1930, an
 
 ::::
 
+## Goal
+
+```{r}
+knitr::include_graphics(here::here("assets/methods.png"))
+```
+
+## What do we need to do the data structuring?
+
+1. Prompt
+
+2. Schema for Output
+
+3. Large Language Model to structure output
+
+4. Quality Assurance
+
+## What do we need to do the data structuring?
+
+### Prompt
+
+::: {.columns}
+::: {.column}
+
+#### Components:
+
+1. Role
+
+You are an expert on Swedish biographies.
+
+2. Task
 
 
-# Classification of occupational titles{visibility="uncounted" #sec-structuring-data background-color="#1b9e77"}
+1. Use the schema to organize the information in the biography.
+2. Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g. 'fil. kand.' is 'filosofie kandidat', and 'Skarab. l.' is 'Skaraborgs Län' etc. 
+3. For missing data in a required field, include the field with a `None` value.
+4. Ensure fields are correctly labeled and structured as per the schema.
+5. Put years in full based on context. Put dates in DD-MM-YYYY format where possible. 
+
+
+3. Details
+
+:::
+::: {.column}
+
+TODO add image of the abbreviations
+
+:::
+
+:::
+
+
+
+
+
+## Structure using OpenAI API 🤖{visibility="uncounted"}
+
+### Using OpenAI's GPT-3.5 chat API:
+
+We provide the system a schema to structure the record in, e.g. keys.
+
+We provide the system the Swedish text
+
+We specify the JSON response format we want
+
+
+
+<br>
+
+::: {.columns}
+::: {.column}
+
+
+```{python, eval=FALSE, echo=TRUE}
+schema = {
+    "type": "object",
+    "required": [
+        "full_name",
+        "location",
+        "occupation",
+        "birth_details",
+        "education",
+        "career",
+        "family",
+    ],
+    "properties": {
+        "full_name": {"type": "string"},
+        "location": {"type": "string"},
+        "occupation": {"type": "string"},
+        "birth_details": {
+            "type": "object",
+            "properties": {
+                "date": {"type": "string"},
+                "place": {"type": "string"},
+                "parents": {"type": "string"},
+            },
+            "required": ["date", "place"],
+        },}}"
+```
+
+
+
+
+
+:::
+::: {.column}
+
+```{python, eval=FALSE, echo=TRUE}
+
+def structure_biography_info(page_text):
+    try:
+        # Create a prompt for the system
+        structure_prompt = f"Task: read the schema and return RFC compliant JSON information about the Swedish individuals from the 1950 biographical dictionary 'Vem är Vem' that is provided below. Use a numeric index for each biography in your JSON output and return information about all of them, including all career information available. Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g. 'fil. kand.' is 'filosofie kandidat', and 'Skarab. l.' is 'Skaraborgs Län'. Put years in full based on context. Put dates in dd/mm/yyyy format where possible. If there is no information for a key, leave it out. If there is no information for a required key, put NULL as the value.\nHere is the schema: {schema}.\nHere is the text: {page_text}. Go!"
+        structure_response = client.chat.completions.create(
+            model="gpt-3.5-turbo-1106",
+            response_format={"type": "json_object"},
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are an expert on Swedish biographies.",
+                },
+                {"role": "user", "content": f"{structure_prompt}"},
+            ],
+        )
+
+        structured_biography_info = json.loads(
+            structure_response.choices[0].message.content
+        )
+
+        return structured_biography_info
+
+    except Exception as e:
+        print(f"Error in structure_biography_info: {e}")
+        return None
+```
+
+
+:::
+::: 
+
+
+# Classification of occupational titles{visibility="uncounted" #sec-classification background-color="#1b9e77"}
+
+Who is an engineer?
+
+## HISCO codes
+
+- Derived from ISCO (International Standard Classification of Occupations) 
+- Invented for the sake of international comparability  
+- Introduced by Leuwen, Maas, Miles (2002) based on ISCO68  
+- Hiearchical structure well suited for analysis
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="300px", out.width="709px"}
+# knitr::include_graphics("Figures/HISCO structure.png")
+```
 
 ## References{visibility="uncounted"}
 
