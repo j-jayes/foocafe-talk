@@ -8,7 +8,8 @@ title-slide-attributes:
   data-background-image: "assets/preview_wide.png"
   data-background-position: "bottom 10"
   data-background-size: "90%"
-  data-background-opacity: "0.4"
+  data-background-opacity: "0.7"
+  data-background-color: "#3B8C41"
 format: 
   revealjs:
     theme: [default, assets/clean.scss]
@@ -30,7 +31,6 @@ execute:
   echo: false
 bibliography: references.bib
 
-
 ---
 
 ## Agenda
@@ -40,7 +40,7 @@ bibliography: references.bib
 
 2. Messy Biographies to Clean Data
 
-3. Classification of occupational titles
+<!-- 3. Classification of occupational titles -->
 
 . . . 
 
@@ -50,7 +50,7 @@ bibliography: references.bib
 
 2. Show how we make use of modern data science tools in academia
 
-3. Share some learnings from academia RE off the shelf software
+<!-- 3. Share some learnings from academia RE off the shelf software -->
 
 ## About me 
 
@@ -103,7 +103,6 @@ knitr::include_graphics("figures/ed_step2_sweden_vs_all.png")
 ```
 
 :::
-. . .
 
 Versus the rest of the world
 
@@ -117,9 +116,7 @@ knitr::include_graphics("figures/ed_step5_sweden_uk_sa_vs_all.png")
 
 :::
 
-. . .
-
-Versus the first industrializing country 🇬🇧 and South Africa TODO flag
+Versus the first industrializing country 🇬🇧 and South Africa 🇿🇦
 
 ## Why did Sweden become rich🇸🇪?
 
@@ -190,6 +187,37 @@ Many reasons!!
 
 ### My preferred explanation: Sweden's Electrification
 
+![](assets/map_big_power_stations.jpeg){fig-align="center"}
+
+## Why did Sweden become rich🇸🇪?{visibility="uncounted" transition="none"}
+
+### My preferred explanation: Sweden's Electrification
+
+![](assets/map_big_power_stations_line_1900.jpeg){fig-align="center"}
+
+## Why did Sweden become rich🇸🇪?{visibility="uncounted" transition="none"}
+
+### My preferred explanation: Sweden's Electrification
+
+![](assets/map_big_power_stations_line_1911.jpeg){fig-align="center"}
+
+## Why did Sweden become rich🇸🇪?{visibility="uncounted" transition="none"}
+
+### My preferred explanation: Sweden's Electrification
+
+![](assets/map_big_power_stations_line_1926.jpeg){fig-align="center"}
+
+## Why did Sweden become rich🇸🇪?{visibility="uncounted" transition="none"}
+
+### My preferred explanation: Sweden's Electrification
+
+![](assets/schon-energy-share.jpeg){fig-align="center"}
+
+
+## Why did Sweden become rich🇸🇪?{visibility="uncounted" transition="none"}
+
+### My preferred explanation: Sweden's Electrification
+
 ::::{.columns}
 
 :::{.column width=50%}
@@ -224,13 +252,19 @@ Further, electrification as a general purpose technology drastically changed tha
 
 ## Why did Sweden become rich🇸🇪?
 
-### Learning and returning
+### Learning and returning (Grönberg 2003)
 
-![](assets/learning_and_returning.png)
+:::{.column-page}
+
+```{=html}
+<iframe src="assets/swedish_engineers_knowledge_transfer.html" width="100%" height="800px" style="border:none;"></iframe>
+```
+
+:::
 
 ## Why did Sweden become rich🇸🇪?
 
-To answer the question of why Sweden became rich, we need to use source material from the time. 
+To answer the question of why Sweden became rich, we need to get data from source material from the time. 
 
 :::: {.columns}
 
@@ -356,6 +390,9 @@ ggsave("assets/who-is-who-volumes.png", width = 6, height = 4, units = "in", dpi
 
 ![](assets/vem_page close-up.jpg){fig-align="center" width=100%}
 
+## Vem är Karl Lund?
+
+Lund, Karl Gustaf, chief engineer, living in Varberg, born on July 22, 1893, in Hille, Gävle County, Sweden, son of clerk Ferdinand L. and Maria Andersson. Married in 1936 to Sigrid Johansson. Children: Ingvar (born 1938), Lennart (born 1942). — Graduated from Bergsskolan in Filipstad in 1917, specialized studies at the Royal Institute of Technology (KTH) from 1920 to 1922, studied at the Institute of Metallurgy and Stockholm University in 1921-1922. Chemist at Strömsnäs Järnverks A-B in Degerfors from 1918 to 1920, metallurgist and chemist at Westinghouse Electric & Manufacturing Co. in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at Laclede Steel Co. in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at A-B Iggesunds Bruk from 1929 to 1931, site manager at Gunnebo Bruks Nya A-B, Varbergsverket, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of Varbergs Sparbank, employer representative in the district council of the county labor board, member of the board of Varbergs Luftskyddsförening (Varberg Air Protection Association), secretary of Varbergs Högerförening (Varberg Conservative Association), chairman of the railway sick fund, and Plant Society for Small Bird Friends.
 
 ## Vem är Karl Lund?
 
@@ -365,13 +402,17 @@ ggsave("assets/who-is-who-volumes.png", width = 6, height = 4, units = "in", dpi
 
 Traveled to [Germany]{style="background-color: #e6e6fa"} in 1921, 1923, 1930, and 1936, [Denmark]{style="background-color: #e6e6fa"}, [Czechoslovakia]{style="background-color: #e6e6fa"} in 1921, 1922, and 1923, [Austria]{style="background-color: #e6e6fa"} in 1921, and the [USA]{style="background-color: #e6e6fa"} from 1923 to 1929. Writings: ["Some fundamental factors for obtaining sharp thermal curves" (Transactions of the American Society for Steel Treating, co-authored with C. Benedicks and W. H. Dearden, 1925)]{style="background-color: #74b7ffff"}, ["Contemporary production of saw blades, circular saws, and machine knives" (Timber Industry, 1931)]{style="background-color: #74b7ffff"}. Hobbies: [hunting]{style="background-color: #ffd700"} and [fishing]{style="background-color: #ffd700"}.
 
-##
 
-![](assets/tidy.jpg)
+## Goal
+
+```{r}
+knitr::include_graphics(here::here("assets/methods.png"))
+```
+
 
 # How can we `structure` the data?{#sec-structure background-color="#1C9E77" visibility="uncounted"}
 
-## Why does a rules based approach not work?
+## Why does a rules-based approach not work?
 
 ### NLP challenges
 
@@ -400,13 +441,46 @@ Traveled to [Germany]{style="background-color: #e6e6fa"} in 1921, 1923, 1930, an
 
 ::::
 
-## Goal
+## Why not treat it as a Named Entity Recognition (NER) problem?
 
-```{r}
-knitr::include_graphics(here::here("assets/methods.png"))
+### Using `Prodigy` can help us label data quickly
+
+:::{.column-page}
+
+```{=html}
+<iframe src="assets/prodigy-clone.html" width="100%" height="800px" style="border:none;"></iframe>
 ```
 
-## What do we need to do the data structuring?
+:::
+
+## Why not treat it as a Named Entity Recognition (NER) problem?
+
+### We want to keep relations between parts of the text
+
+```{python, eval=FALSE, echo=TRUE}
+import prodigy
+from prodigy import recipe
+
+@recipe("biographical-relations")
+def biographical_relations(dataset, source, model):
+    def add_relations(examples):
+        for eg in examples:
+            # Present entities and relationship options
+            eg["relations"] = [
+                {"head": "Karl Lund", "tail": "Varberg", "label": "LIVES_IN"},
+                {"head": "Karl Lund", "tail": "Hille", "label": "BORN_IN"}
+            ]
+            yield eg
+    
+    return {
+        "dataset": dataset,
+        "stream": add_relations(source),
+        "view_id": "relations"
+    }
+
+```
+
+## What do we need to do the data structuring with an LLM?
 
 1. Prompt
 
@@ -416,148 +490,368 @@ knitr::include_graphics(here::here("assets/methods.png"))
 
 4. Quality Assurance
 
-## What do we need to do the data structuring?
 
-### Prompt
-
-::: {.columns}
-::: {.column}
+## 1. Prompt
 
 #### Components:
 
 1. Role
 
-You are an expert on Swedish biographies.
+*You are an expert on Swedish biographies.*
 
 2. Task
 
-
-1. Use the schema to organize the information in the biography.
-2. Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g. 'fil. kand.' is 'filosofie kandidat', and 'Skarab. l.' is 'Skaraborgs Län' etc. 
-3. For missing data in a required field, include the field with a `None` value.
-4. Ensure fields are correctly labeled and structured as per the schema.
-5. Put years in full based on context. Put dates in DD-MM-YYYY format where possible. 
-
+*You will help me structure the following Swedish biographies from the biographical dictionary 'Vem är Vem'., according to the provided schema.*
 
 3. Details
 
-:::
+- *Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g. 'fil. kand.' is 'filosofie kandidat', and 'Skarab. l.' is 'Skaraborgs Län' etc.*
+- *For missing data in a required field, include the field with a `None` value.*
+- *Put years in full based on context. Put dates in DD-MM-YYYY format where possible.*
+
+
+## 2. Schema for Output
+
+:::: {.columns}
+
 ::: {.column}
 
-TODO add image of the abbreviations
+### Before pydantic
+
+Prompt:
+
+*Can you put the following into a json schema following the https://schema.org/Person format?*
+
+Output:
+
+```{r}
+#| eval: FALSE
+#| echo: TRUE
+
+Here’s a structured JSON-LD schema (using schema.org/Person
+) representation of the biography you gave. I’ve nested occupations, education, family, and memberships in a way that aligns with schema.org, while keeping extra details in description when no direct property exists
+
+```json
+
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Karl Gustaf Lund",
+  "givenName": "Karl Gustaf",
+  "familyName": "Lund",
+  "birthDate": "1893-07-22",
+  "birthPlace": {
+    "@type": "Place",
+    "name": "Hille, Gävle County, Sweden"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Varberg",
+    "addressCountry": "Sweden"
+  },
+
+
+
+```
+
 
 :::
 
+::: {.column}
+
+Problem:
+
+- Schema is not uniform (in fields) across biographies, combining the information is tedious
+
+- Answer from LLM is often pre-pended with text, not just JSON
+
+- So saving the output as JSON and reading it in is not straightforward
+
 :::
 
+::::
+
+## 2. Schema for Output
+
+### With pydantic
+
+```{python, eval=FALSE, echo=TRUE}
+
+class Occupation(BaseModel):
+    occupation: str = Field(..., description="Occupation in Swedish")
+    occupation_english: Optional[str] = Field(None, description="Occupation translated into English")
+
+class Parent(BaseModel):
+    name: str = Field(..., description="Parent's name")
+    occupation: Optional[Occupation] = Field(None, description="Parent's occupation title")
+
+...
 
 
+class BioSchema(BaseModel):
+    full_name: str = Field(..., description="Full name of the person")
+    location: Optional[str] = Field(None, description="Location associated with the person")
+    occupation: Occupation = Field(..., description="Occupation details of the person")
+    birth_details: BirthDetails = Field(..., description="Details about the person's birth")
+    education: Optional[List[EducationItem]] = Field(None, description="List of educational qualifications")
+    career: List[CareerItem] = Field(..., description="Career history of the person")
+    family: Optional[Family] = Field(None, description="Family details including spouse and children")
+    publications: Optional[List[Publication]] = Field(None, description="List of publications")
+    community_involvement: Optional[List[CommunityInvolvement]] = Field(None, description="Community roles and involvement")
+    board_memberships: Optional[List[BoardMembership]] = Field(None, description="Board memberships held by the person")
+    honorary_titles: Optional[List[HonoraryTitle]] = Field(None, description="List of honorary titles received")
+    hobbies: Optional[List[str]] = Field(None, description="List of hobbies")
+    travels: Optional[List[Travel]] = Field(None, description="Travel details")
+    awards: Optional[List[str]] = Field(None, description="List of awards received")
+    leadership_roles: Optional[List[str]] = Field(None, description="List of leadership roles held")
+    languages_spoken: Optional[List[str]] = Field(None, description="Languages spoken by the person")
+    military_service: Optional[str] = Field(None, description="Military service details")
+    honors: Optional[str] = Field(None, description="Honors received by the person")
+    death_date: Optional[str] = Field(None, description="Date of death")
+
+```
 
 
-## Structure using OpenAI API 🤖{visibility="uncounted"}
+## 3. Large Language Model to structure output{.smaller}
 
-### Using OpenAI's GPT-3.5 chat API:
+### Many to choose from!
 
-We provide the system a schema to structure the record in, e.g. keys.
+| Model | Company | Environment |
+|-------|---------|-------------|
+| GPT-3.5 | OpenAI | Cloud |
+| GPT-4o | OpenAI | Cloud |
+| GPT-4o mini | OpenAI | Cloud |
+| Gemini 1.5 Pro | Google | Cloud |
+| Gemini 1.5 Flash | Google | Cloud |
+| Gemini 2.0 Flash | Google | Cloud |
+| Gemini 2.5 Pro | Google | Cloud |
+| Llama 3.2 | Meta | Local and Cloud |
 
-We provide the system the Swedish text
 
-We specify the JSON response format we want
+```{mermaid}
+%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '16px' }}}%%
+gantt
+    title Chat Model Release Timeline
+    dateFormat  YYYY-MM-DD
+    axisFormat %Y-%m
 
+    section OpenAI
+    GPT-3.5           :done, 2023-03-27, 1d
+    GPT-4o            :done, 2024-05-13, 1d
+    GPT-4o mini       :done, 2024-07-18, 1d
+    
 
+    section Google
+    Gemini 1.5 Pro    :done, 2024-02-15, 1d
+    Gemini 1.5 Flash  :done, 2024-05-14, 1d
+    Gemini 2.0 Flash  :active, 2025-01-30, 1d
+    Gemini 2.5 Pro    :active, 2025-03-25, 1d
+
+    section Meta
+    Llama 3.2         :active, 2025-08-13, 1d
+```
+
+## 4. Quality Assurance{.smaller}
+
+We need to label some data to check how well the structuring works
+
+| Field Path                     | Ground Truth                 | Pipeline Output           | TP | FP | FN | Analysis                                                                     |
+|:-------------------------------|:-----------------------------|:--------------------------|:--:|:--:|:--:|:-----------------------------------------------------------------------------|
+| `full_name`                    | `Karl Gustaf Lund`           | `Karl Gustaf Lund`        | 1  | 0  | 0  | **Correct**: Perfect match.                                                  |
+| `birth_details.place`          | `Hille, Gävleborgs län`      | `Hille, Gävle County`     | 0  | 1  | 1  | **Incorrect**: Similar but not an exact match. Scored as a miss and a mistake. |
+| `education` (list)             | 3 items                      | 0 items                   | 0  | 0  | 3  | **Missed**: Failed to extract any education entries.                         |
+| `career` (list)                | 6 items                      | 2 items                   | 1  | 1  | 5  | **Partial**: Found 1/6 correctly, hallucinated 1, and missed the other 5.    |
+| `family.spouse.birth_date`     | `null`                       | `1936`                    | 0  | 1  | 0  | **Hallucination**: Extracted marriage year as a non-existent birth date.      |
+| `family.children` (list)       | 2 items                      | 1 item                    | 1  | 0  | 1  | **Partial**: Found 1 of the 2 children and missed the other.                 |
+| **Totals** |                              |                           | **3** | **3** | **10** |  |
+
+## Performance
+
+### Based on a sample of 2000 hand-labeled and scored biographies
 
 <br>
+
+| Model | Company | Environment | Precision | Recall | F1-Score |
+|-------|---------|-------------|-----------|--------|----------|
+| GPT-3.5 | OpenAI | Cloud | 46% | 72% | 56% |
+| GPT-4o mini | OpenAI | Cloud | 72% | 78% | 75% |
+| Llama 3.2 | Meta | Local and Cloud | 75% | 81% | 78% |
+| Gemini 2.5 Pro | Google | Cloud | 88% | 90% | 89% |
+
+## Performance
+
+::: {.columns}
+
+::: {.column}
+
+- Manually labelling and scoring 2,000 biographies took about three weeks of full-time work.
+
+- To do the 75,000 biographies in Vem är Vem would take about 1.5 years, just to collect.
+
+- Once this system is in place, we can run the structuring on new biographies in a matter of minutes
+
+:::
+
+::: {.column}
+
+![](assets/wikihow.jpeg)
+
+:::
+
+:::
+
+
+
+
+
+# What do we learn?{#sec-learnings background-color="#1C9E77" visibility="uncounted"}
+
+(about the engineers?)
+
+## What do we learn?
+
+```{r}
+library(ggtext)
+library(showtext)
+library(tidyverse)
+font_add_google("IBM Plex Mono", "ibm")
+theme_set(theme_light())
+showtext_auto(enable = TRUE)
+
+timeline <- tibble(
+  event = c("Birth", "Graduated from Bergsskolan in Filipstad", 
+            "Specialized studies at the Royal Institute of Technology (KTH)",
+            "Studied at the Institute of Metallurgy and Stockholm University",
+            "Marriage to Sigrid Johansson",
+            "Birth of Ingvar", "Birth of Lennart",
+            "Chemist at Strömsnäs Järnverks A-B in Degerfors",
+            "Metallurgist and chemist at Westinghouse Electric & Manufacturing Co.",
+            "Chief metallurgist at Laclede Steel Co. in Alton, Illinois, USA",
+            "Furnace and steelworks engineer at A-B Iggesunds Bruk",
+            "Site manager at Gunnebo Bruks Nya A-B, Varbergsverket",
+            "Member of the municipal executive committee",
+            "Deputy chairman of the economic department",
+            "Deputy member of the board of the power plant",
+            "Chairman of Varbergs Sparbank",
+            "Employer representative in the district council of the county labor board",
+            "Member of the board of Varbergs Luftskyddsförening",
+            "Secretary of Varbergs Högerförening",
+            "Chairman of the railway sick fund",
+            "Plant Society for Small Bird Friends",
+            "Traveled to Germany",
+            "Traveled to Denmark and Czechoslovakia",
+            "Traveled to Austria",
+            "Traveled to the USA",
+            "*Wrote 'Some fundamental factors for obtaining sharp thermal curves'",
+            "*Wrote 'Contemporary production of saw blades, circular saws, and machine knives'",
+            "Hobbies: hunting and fishing"
+  ),
+  start_year = c(1893, 1917, 1920, 1921, 1936, 1938, 1942, 1918, 1923, 1927, 1929,
+                 1931, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1921, 1921, 1921, 1923, 1925, 1931, NA),
+  end_year = c(1893, 1917, 1922, 1922, 1936, 1938, 1942, 1920, 1929, 1927, 1931,
+               NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1923, 1923, 1921, 1929, NA, NA, NA)
+)
+
+timeline %>%
+    filter(!is.na(start_year)) %>%
+  arrange(start_year) %>%
+  mutate(end_year_imputed = case_when(
+    is.na(end_year) ~ lead(start_year),
+    is.na(lead(start_year)) ~ start_year,
+    TRUE ~ end_year
+  )) %>%
+  mutate(
+    event = fct_reorder(event, start_year, .desc = TRUE)
+  ) %>%
+  # pivot_longer(c(start_year, end_year_imputed)) %>%
+  # ggplot(aes(value, english_occupation, colour = name)) +
+  ggplot(aes(xmin = start_year, xmax = end_year_imputed, y = event)) +
+  geom_linerange(colour = "gray50", size = 2) +
+  geom_point(aes(x = end_year_imputed), colour = "#be5d2b", size = 4) +
+  geom_point(aes(x = start_year), colour = "#2B8CBE", size = 4) +
+  labs(
+    title = "Karl Lund's life course",
+    subtitle = "Showing <span style = 'color:#2B8CBE;'>start dates</span> and <span style = 'color:#be5d2b;'>end dates</span> for his various roles and life events",
+    x = NULL,
+    y = NULL
+  ) +
+  theme(
+    legend.position = "none",
+    plot.subtitle = element_markdown(),
+    plot.title.position = "plot",
+    text = element_text(family = "ibm", size = 13)
+  )
+
+
+
+```
+
+
+## What do we learn?
+
+### Engineers in `electrical appliances and machinery` move the furthest from birthplace to study
+
+![](assets/engineer_distance.png){fig-align="center" width=100%}
+
+## What do we learn?
+
 
 ::: {.columns}
 ::: {.column}
 
+- 4,700 Swedes who studied engineering moved to the USA and returned between 1890 and 1960.
 
-```{python, eval=FALSE, echo=TRUE}
-schema = {
-    "type": "object",
-    "required": [
-        "full_name",
-        "location",
-        "occupation",
-        "birth_details",
-        "education",
-        "career",
-        "family",
-    ],
-    "properties": {
-        "full_name": {"type": "string"},
-        "location": {"type": "string"},
-        "occupation": {"type": "string"},
-        "birth_details": {
-            "type": "object",
-            "properties": {
-                "date": {"type": "string"},
-                "place": {"type": "string"},
-                "parents": {"type": "string"},
-            },
-            "required": ["date", "place"],
-        },}}"
-```
+- Of those engineers who move to the USA and return, about 30% of them return to Sweden within 5 years, and about 90% return within 10 years.
 
+- They work on average at 2.1 different companies while in the USA.
 
+- When they get back to Sweden, two-thirds of key positions in industry were held by engineers with foreign experience.
 
-
+- The firms that hire returning engineers saw faster growth in employment than firms that did not hire returning engineers.
 
 :::
+
 ::: {.column}
 
-```{python, eval=FALSE, echo=TRUE}
-
-def structure_biography_info(page_text):
-    try:
-        # Create a prompt for the system
-        structure_prompt = f"Task: read the schema and return RFC compliant JSON information about the Swedish individuals from the 1950 biographical dictionary 'Vem är Vem' that is provided below. Use a numeric index for each biography in your JSON output and return information about all of them, including all career information available. Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g. 'fil. kand.' is 'filosofie kandidat', and 'Skarab. l.' is 'Skaraborgs Län'. Put years in full based on context. Put dates in dd/mm/yyyy format where possible. If there is no information for a key, leave it out. If there is no information for a required key, put NULL as the value.\nHere is the schema: {schema}.\nHere is the text: {page_text}. Go!"
-        structure_response = client.chat.completions.create(
-            model="gpt-3.5-turbo-1106",
-            response_format={"type": "json_object"},
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You are an expert on Swedish biographies.",
-                },
-                {"role": "user", "content": f"{structure_prompt}"},
-            ],
-        )
-
-        structured_biography_info = json.loads(
-            structure_response.choices[0].message.content
-        )
-
-        return structured_biography_info
-
-    except Exception as e:
-        print(f"Error in structure_biography_info: {e}")
-        return None
+```{r}
+knitr::include_graphics("assets/p4_2.png")
 ```
-
 
 :::
 ::: 
 
 
-# Classification of occupational titles{visibility="uncounted" #sec-classification background-color="#1b9e77"}
+# What did we learn?{#sec-what-did-we-learn background-color="#1C9E77" visibility="uncounted"}
 
-Who is an engineer?
+(about data structuring tasks?)
 
-## HISCO codes
+## There is a lot of unstructured historical data out there!
 
-- Derived from ISCO (International Standard Classification of Occupations) 
-- Invented for the sake of international comparability  
-- Introduced by Leuwen, Maas, Miles (2002) based on ISCO68  
-- Hiearchical structure well suited for analysis
+::: {.columns}
+::: {.column}
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="300px", out.width="709px"}
-# knitr::include_graphics("Figures/HISCO structure.png")
-```
+![](assets/world_champtions.jpeg){fig-align="center" width=100%}
+
+:::
+::: {.column}
+
+- I am sure that in your own work, there is a lot of unstructured data that you would like to use for some purpose.
+
+- Investing a bit of time in setting up a system to structure that data can pay off in the long run - and save you **~ 1.5 years of manual labour**
+
+- These kinds of tasks are going to become easier and easier to do as LLMs improve - the kinds of questions you can ask are going to become more interesting!
+
+:::
+::: 
+
+
+
 
 ## References{visibility="uncounted"}
 
 ::: {#refs}
 
 :::
+
+## Appendix{visibility="uncounted"}
 

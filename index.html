@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Jonathan Jayes">
-  <meta name="dcterms.date" content="2025-08-25">
+  <meta name="dcterms.date" content="2025-08-27">
   <title>Messy Biographies to Clean Data - Structuring Text with LLMs and Pydantic</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -415,7 +415,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="assets/preview_wide.png" data-background-opacity="0.4" data-background-position="bottom 10" data-background-size="90%" class="quarto-title-block center">
+<section id="title-slide" data-background-color="#3B8C41" data-background-image="assets/preview_wide.png" data-background-opacity="0.7" data-background-position="bottom 10" data-background-size="90%" class="quarto-title-block center">
   <h1 class="title">Messy Biographies to Clean Data - Structuring Text with LLMs and Pydantic</h1>
   <p class="subtitle">FOO CAFE 13 years strong</p>
 
@@ -427,22 +427,22 @@ Jonathan Jayes
 </div>
 </div>
 
-  <p class="date">2025-08-25</p>
+  <p class="date">2025-08-27</p>
 </section>
 <section id="agenda" class="slide level2">
 <h2>Agenda</h2>
 <ol type="1">
 <li><p>Whirlwind tour through Swedish economic history</p></li>
 <li><p>Messy Biographies to Clean Data</p></li>
-<li><p>Classification of occupational titles</p></li>
 </ol>
+<!-- 3. Classification of occupational titles -->
 <div class="fragment">
 <h3 id="goals">Goals</h3>
 <ol type="1">
 <li><p>Teach you something you didn’t know about Sweden’s economic history</p></li>
 <li><p>Show how we make use of modern data science tools in academia</p></li>
-<li><p>Share some learnings from academia RE off the shelf software</p></li>
 </ol>
+<!-- 3. Share some learnings from academia RE off the shelf software -->
 </div>
 </section>
 <section id="about-me" class="slide level2">
@@ -502,9 +502,7 @@ Jonathan Jayes
 </div>
 </div>
 </div>
-<div class="fragment">
 <p>Versus the rest of the world</p>
-</div>
 </section>
 <section id="when-did-sweden-become-rich-2" class="slide level2">
 <h2>When did Sweden become rich🇸🇪💸?</h2>
@@ -519,9 +517,7 @@ Jonathan Jayes
 </div>
 </div>
 </div>
-<div class="fragment">
-<p>Versus the first industrializing country 🇬🇧 and South Africa TODO flag</p>
-</div>
+<p>Versus the first industrializing country 🇬🇧 and South Africa 🇿🇦</p>
 </section>
 <section id="why-did-sweden-become-rich" class="slide level2">
 <h2>Why did Sweden become rich🇸🇪?</h2>
@@ -598,6 +594,31 @@ gantt
 <section id="why-did-sweden-become-rich-1" class="slide level2">
 <h2>Why did Sweden become rich🇸🇪?</h2>
 <h3 id="my-preferred-explanation-swedens-electrification">My preferred explanation: Sweden’s Electrification</h3>
+
+<img data-src="assets/map_big_power_stations.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="why-did-sweden-become-rich-2" class="slide level2" data-visibility="uncounted" data-transition="none">
+<h2>Why did Sweden become rich🇸🇪?</h2>
+<h3 id="my-preferred-explanation-swedens-electrification-1">My preferred explanation: Sweden’s Electrification</h3>
+
+<img data-src="assets/map_big_power_stations_line_1900.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="why-did-sweden-become-rich-3" class="slide level2" data-visibility="uncounted" data-transition="none">
+<h2>Why did Sweden become rich🇸🇪?</h2>
+<h3 id="my-preferred-explanation-swedens-electrification-2">My preferred explanation: Sweden’s Electrification</h3>
+
+<img data-src="assets/map_big_power_stations_line_1911.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="why-did-sweden-become-rich-4" class="slide level2" data-visibility="uncounted" data-transition="none">
+<h2>Why did Sweden become rich🇸🇪?</h2>
+<h3 id="my-preferred-explanation-swedens-electrification-3">My preferred explanation: Sweden’s Electrification</h3>
+
+<img data-src="assets/map_big_power_stations_line_1926.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="why-did-sweden-become-rich-5" class="slide level2" data-visibility="uncounted" data-transition="none">
+<h2>Why did Sweden become rich🇸🇪?</h2>
+<h3 id="my-preferred-explanation-swedens-electrification-4">My preferred explanation: Sweden’s Electrification</h3>
+
+<img data-src="assets/schon-energy-share.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="why-did-sweden-become-rich-6" class="slide level2" data-visibility="uncounted" data-transition="none">
+<h2>Why did Sweden become rich🇸🇪?</h2>
+<h3 id="my-preferred-explanation-swedens-electrification-5">My preferred explanation: Sweden’s Electrification</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
@@ -627,14 +648,16 @@ gantt
           display:block!important;
       }</style></aside>
 </section>
-<section id="why-did-sweden-become-rich-2" class="slide level2">
+<section id="why-did-sweden-become-rich-7" class="slide level2">
 <h2>Why did Sweden become rich🇸🇪?</h2>
-<h3 id="learning-and-returning">Learning and returning</h3>
-
-<img data-src="assets/learning_and_returning.png" class="r-stretch"></section>
-<section id="why-did-sweden-become-rich-3" class="slide level2">
+<h3 id="learning-and-returning-grönberg-2003">Learning and returning (Grönberg 2003)</h3>
+<div class="column-page">
+<iframe src="assets/swedish_engineers_knowledge_transfer.html" width="100%" height="800px" style="border:none;"></iframe>
+</div>
+</section>
+<section id="why-did-sweden-become-rich-8" class="slide level2">
 <h2>Why did Sweden become rich🇸🇪?</h2>
-<p>To answer the question of why Sweden became rich, we need to use source material from the time.</p>
+<p>To answer the question of why Sweden became rich, we need to get data from source material from the time.</p>
 <div class="columns">
 <div class="column" style="width:33%;">
 <!-- ```{r}
@@ -704,23 +727,27 @@ knitr::include_graphics(here::here("assets/vem_page copy.png"))
 <img data-src="assets/vem_page%20close-up.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="vem-är-karl-lund" class="slide level2">
 <h2>Vem är Karl Lund?</h2>
-<p><span style="background-color: #b0c4de">Lund, Karl Gustaf</span>, <span style="background-color: #d2b48c">chief engineer</span>, <span style="background-color: #d28ccdff">living in Varberg</span>, <span style="background-color: #ff8c69">born on July 22, 1893</span>, <span style="background-color: #e8ee90ff">in Hille, Gävle County</span>, Sweden, son of <span style="background-color: #9370db">clerk Ferdinand L. and Maria Andersson</span>. Married in 1936 to <span style="background-color: #ffadc1">Sigrid Johansson</span>. Children: <span style="background-color: #ffdead">Ingvar (born 1938)</span>, <span style="background-color: #ffdead">Lennart (born 1942)</span>. — Graduated from <span style="background-color: #afeeee">Bergsskolan</span> in Filipstad in 1917, specialized studies at the <span style="background-color: #afeeee">Royal Institute of Technology (KTH)</span> from 1920 to 1922, studied at the <span style="background-color: #afeeee">Institute of Metallurgy</span> and <span style="background-color: #afeeee">Stockholm University</span> in 1921-1922. Chemist at <span style="background-color: #98fb98">Strömsnäs Järnverks A-B</span> in Degerfors from 1918 to 1920, metallurgist and chemist at <span style="background-color: #98fb98">Westinghouse Electric &amp; Manufacturing Co.</span> in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at <span style="background-color: #98fb98">Laclede Steel Co.</span> in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at <span style="background-color: #98fb98">A-B Iggesunds Bruk</span> from 1929 to 1931, site manager at <span style="background-color: #98fb98">Gunnebo Bruks Nya A-B, Varbergsverket</span>, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of <span style="background-color: #ffdab9">Varbergs Sparbank</span>, employer representative in the district council of the county labor board, member of the board of <span style="background-color: #ffdab9">Varbergs Luftskyddsförening (Varberg Air Protection Association)</span>, secretary of <span style="background-color: #ffdab9">Varbergs Högerförening (Varberg Conservative Association)</span>, chairman of the railway sick fund, and <span style="background-color: #ffdab9">Plant Society for Small Bird Friends</span>.</p>
+<p>Lund, Karl Gustaf, chief engineer, living in Varberg, born on July 22, 1893, in Hille, Gävle County, Sweden, son of clerk Ferdinand L. and Maria Andersson. Married in 1936 to Sigrid Johansson. Children: Ingvar (born 1938), Lennart (born 1942). — Graduated from Bergsskolan in Filipstad in 1917, specialized studies at the Royal Institute of Technology (KTH) from 1920 to 1922, studied at the Institute of Metallurgy and Stockholm University in 1921-1922. Chemist at Strömsnäs Järnverks A-B in Degerfors from 1918 to 1920, metallurgist and chemist at Westinghouse Electric &amp; Manufacturing Co.&nbsp;in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at Laclede Steel Co.&nbsp;in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at A-B Iggesunds Bruk from 1929 to 1931, site manager at Gunnebo Bruks Nya A-B, Varbergsverket, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of Varbergs Sparbank, employer representative in the district council of the county labor board, member of the board of Varbergs Luftskyddsförening (Varberg Air Protection Association), secretary of Varbergs Högerförening (Varberg Conservative Association), chairman of the railway sick fund, and Plant Society for Small Bird Friends.</p>
 </section>
 <section id="vem-är-karl-lund-1" class="slide level2">
 <h2>Vem är Karl Lund?</h2>
+<p><span style="background-color: #b0c4de">Lund, Karl Gustaf</span>, <span style="background-color: #d2b48c">chief engineer</span>, <span style="background-color: #d28ccdff">living in Varberg</span>, <span style="background-color: #ff8c69">born on July 22, 1893</span>, <span style="background-color: #e8ee90ff">in Hille, Gävle County</span>, Sweden, son of <span style="background-color: #9370db">clerk Ferdinand L. and Maria Andersson</span>. Married in 1936 to <span style="background-color: #ffadc1">Sigrid Johansson</span>. Children: <span style="background-color: #ffdead">Ingvar (born 1938)</span>, <span style="background-color: #ffdead">Lennart (born 1942)</span>. — Graduated from <span style="background-color: #afeeee">Bergsskolan</span> in Filipstad in 1917, specialized studies at the <span style="background-color: #afeeee">Royal Institute of Technology (KTH)</span> from 1920 to 1922, studied at the <span style="background-color: #afeeee">Institute of Metallurgy</span> and <span style="background-color: #afeeee">Stockholm University</span> in 1921-1922. Chemist at <span style="background-color: #98fb98">Strömsnäs Järnverks A-B</span> in Degerfors from 1918 to 1920, metallurgist and chemist at <span style="background-color: #98fb98">Westinghouse Electric &amp; Manufacturing Co.</span> in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at <span style="background-color: #98fb98">Laclede Steel Co.</span> in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at <span style="background-color: #98fb98">A-B Iggesunds Bruk</span> from 1929 to 1931, site manager at <span style="background-color: #98fb98">Gunnebo Bruks Nya A-B, Varbergsverket</span>, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of <span style="background-color: #ffdab9">Varbergs Sparbank</span>, employer representative in the district council of the county labor board, member of the board of <span style="background-color: #ffdab9">Varbergs Luftskyddsförening (Varberg Air Protection Association)</span>, secretary of <span style="background-color: #ffdab9">Varbergs Högerförening (Varberg Conservative Association)</span>, chairman of the railway sick fund, and <span style="background-color: #ffdab9">Plant Society for Small Bird Friends</span>.</p>
+</section>
+<section id="vem-är-karl-lund-2" class="slide level2">
+<h2>Vem är Karl Lund?</h2>
 <p>Traveled to <span style="background-color: #e6e6fa">Germany</span> in 1921, 1923, 1930, and 1936, <span style="background-color: #e6e6fa">Denmark</span>, <span style="background-color: #e6e6fa">Czechoslovakia</span> in 1921, 1922, and 1923, <span style="background-color: #e6e6fa">Austria</span> in 1921, and the <span style="background-color: #e6e6fa">USA</span> from 1923 to 1929. Writings: <span style="background-color: #74b7ffff">“Some fundamental factors for obtaining sharp thermal curves” (Transactions of the American Society for Steel Treating, co-authored with C. Benedicks and W. H. Dearden, 1925)</span>, <span style="background-color: #74b7ffff">“Contemporary production of saw blades, circular saws, and machine knives” (Timber Industry, 1931)</span>. Hobbies: <span style="background-color: #ffd700">hunting</span> and <span style="background-color: #ffd700">fishing</span>.</p>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="goal" class="slide level2">
+<h2>Goal</h2>
 
-<img data-src="assets/tidy.jpg" class="r-stretch"></section></section>
+<img data-src="assets/methods.png" width="1798" class="r-stretch"></section></section>
 <section>
 <section id="sec-structure" class="title-slide slide level1 center" data-background-color="#1C9E77" data-visibility="uncounted">
 <h1>How can we <code>structure</code> the data?</h1>
 
 </section>
 <section id="why-does-a-rules-based-approach-not-work" class="slide level2">
-<h2>Why does a rules based approach not work?</h2>
+<h2>Why does a rules-based approach not work?</h2>
 <h3 id="nlp-challenges">NLP challenges</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -742,12 +769,40 @@ knitr::include_graphics(here::here("assets/vem_page copy.png"))
 </div>
 </div></div>
 </section>
-<section id="goal" class="slide level2">
-<h2>Goal</h2>
-
-<img data-src="assets/methods.png" width="1798" class="r-stretch"></section>
-<section id="what-do-we-need-to-do-the-data-structuring" class="slide level2">
-<h2>What do we need to do the data structuring?</h2>
+<section id="why-not-treat-it-as-a-named-entity-recognition-ner-problem" class="slide level2">
+<h2>Why not treat it as a Named Entity Recognition (NER) problem?</h2>
+<h3 id="using-prodigy-can-help-us-label-data-quickly">Using <code>Prodigy</code> can help us label data quickly</h3>
+<div class="column-page">
+<iframe src="assets/prodigy-clone.html" width="100%" height="800px" style="border:none;"></iframe>
+</div>
+</section>
+<section id="why-not-treat-it-as-a-named-entity-recognition-ner-problem-1" class="slide level2">
+<h2>Why not treat it as a Named Entity Recognition (NER) problem?</h2>
+<h3 id="we-want-to-keep-relations-between-parts-of-the-text">We want to keep relations between parts of the text</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="im">import</span> prodigy</span>
+<span id="cb1-2"><a href=""></a><span class="im">from</span> prodigy <span class="im">import</span> recipe</span>
+<span id="cb1-3"><a href=""></a></span>
+<span id="cb1-4"><a href=""></a><span class="at">@recipe</span>(<span class="st">"biographical-relations"</span>)</span>
+<span id="cb1-5"><a href=""></a><span class="kw">def</span> biographical_relations(dataset, source, model):</span>
+<span id="cb1-6"><a href=""></a>    <span class="kw">def</span> add_relations(examples):</span>
+<span id="cb1-7"><a href=""></a>        <span class="cf">for</span> eg <span class="kw">in</span> examples:</span>
+<span id="cb1-8"><a href=""></a>            <span class="co"># Present entities and relationship options</span></span>
+<span id="cb1-9"><a href=""></a>            eg[<span class="st">"relations"</span>] <span class="op">=</span> [</span>
+<span id="cb1-10"><a href=""></a>                {<span class="st">"head"</span>: <span class="st">"Karl Lund"</span>, <span class="st">"tail"</span>: <span class="st">"Varberg"</span>, <span class="st">"label"</span>: <span class="st">"LIVES_IN"</span>},</span>
+<span id="cb1-11"><a href=""></a>                {<span class="st">"head"</span>: <span class="st">"Karl Lund"</span>, <span class="st">"tail"</span>: <span class="st">"Hille"</span>, <span class="st">"label"</span>: <span class="st">"BORN_IN"</span>}</span>
+<span id="cb1-12"><a href=""></a>            ]</span>
+<span id="cb1-13"><a href=""></a>            <span class="cf">yield</span> eg</span>
+<span id="cb1-14"><a href=""></a>    </span>
+<span id="cb1-15"><a href=""></a>    <span class="cf">return</span> {</span>
+<span id="cb1-16"><a href=""></a>        <span class="st">"dataset"</span>: dataset,</span>
+<span id="cb1-17"><a href=""></a>        <span class="st">"stream"</span>: add_relations(source),</span>
+<span id="cb1-18"><a href=""></a>        <span class="st">"view_id"</span>: <span class="st">"relations"</span></span>
+<span id="cb1-19"><a href=""></a>    }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="what-do-we-need-to-do-the-data-structuring-with-an-llm" class="slide level2">
+<h2>What do we need to do the data structuring with an LLM?</h2>
 <ol type="1">
 <li><p>Prompt</p></li>
 <li><p>Schema for Output</p></li>
@@ -755,86 +810,402 @@ knitr::include_graphics(here::here("assets/vem_page copy.png"))
 <li><p>Quality Assurance</p></li>
 </ol>
 </section>
-<section id="structure-using-openai-api" class="slide level2" data-visibility="uncounted">
-<h2>Structure using OpenAI API 🤖</h2>
-<h3 id="using-openais-gpt-3.5-chat-api">Using OpenAI’s GPT-3.5 chat API:</h3>
-<p>We provide the system a schema to structure the record in, e.g.&nbsp;keys.</p>
-<p>We provide the system the Swedish text</p>
-<p>We specify the JSON response format we want</p>
-<p><br></p>
+<section id="prompt" class="slide level2">
+<h2>1. Prompt</h2>
+<h4 id="components">Components:</h4>
+<ol type="1">
+<li>Role</li>
+</ol>
+<p><em>You are an expert on Swedish biographies.</em></p>
+<ol start="2" type="1">
+<li>Task</li>
+</ol>
+<p><em>You will help me structure the following Swedish biographies from the biographical dictionary ‘Vem är Vem’., according to the provided schema.</em></p>
+<ol start="3" type="1">
+<li>Details</li>
+</ol>
+<ul>
+<li><em>Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g.&nbsp;‘fil. kand.’ is ‘filosofie kandidat’, and ‘Skarab. l.’ is ‘Skaraborgs Län’ etc.</em></li>
+<li><em>For missing data in a required field, include the field with a <code>None</code> value.</em></li>
+<li><em>Put years in full based on context. Put dates in DD-MM-YYYY format where possible.</em></li>
+</ul>
+</section>
+<section id="schema-for-output" class="slide level2">
+<h2>2. Schema for Output</h2>
 <div class="columns">
 <div class="column">
+<h3 id="before-pydantic">Before pydantic</h3>
+<p>Prompt:</p>
+<p><em>Can you put the following into a json schema following the https://schema.org/Person format?</em></p>
+<p>Output:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a>schema <span class="op">=</span> {</span>
-<span id="cb1-2"><a href=""></a>    <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
-<span id="cb1-3"><a href=""></a>    <span class="st">"required"</span>: [</span>
-<span id="cb1-4"><a href=""></a>        <span class="st">"full_name"</span>,</span>
-<span id="cb1-5"><a href=""></a>        <span class="st">"location"</span>,</span>
-<span id="cb1-6"><a href=""></a>        <span class="st">"occupation"</span>,</span>
-<span id="cb1-7"><a href=""></a>        <span class="st">"birth_details"</span>,</span>
-<span id="cb1-8"><a href=""></a>        <span class="st">"education"</span>,</span>
-<span id="cb1-9"><a href=""></a>        <span class="st">"career"</span>,</span>
-<span id="cb1-10"><a href=""></a>        <span class="st">"family"</span>,</span>
-<span id="cb1-11"><a href=""></a>    ],</span>
-<span id="cb1-12"><a href=""></a>    <span class="st">"properties"</span>: {</span>
-<span id="cb1-13"><a href=""></a>        <span class="st">"full_name"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
-<span id="cb1-14"><a href=""></a>        <span class="st">"location"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
-<span id="cb1-15"><a href=""></a>        <span class="st">"occupation"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
-<span id="cb1-16"><a href=""></a>        <span class="st">"birth_details"</span>: {</span>
-<span id="cb1-17"><a href=""></a>            <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
-<span id="cb1-18"><a href=""></a>            <span class="st">"properties"</span>: {</span>
-<span id="cb1-19"><a href=""></a>                <span class="st">"date"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
-<span id="cb1-20"><a href=""></a>                <span class="st">"place"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
-<span id="cb1-21"><a href=""></a>                <span class="st">"parents"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
-<span id="cb1-22"><a href=""></a>            },</span>
-<span id="cb1-23"><a href=""></a>            <span class="st">"required"</span>: [<span class="st">"date"</span>, <span class="st">"place"</span>],</span>
-<span id="cb1-24"><a href=""></a>        },}}<span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>Here’s a structured JSON<span class="sc">-</span>LD <span class="fu">schema</span> (using schema.org<span class="sc">/</span>Person</span>
+<span id="cb2-2"><a href=""></a>) representation of the biography you gave. I’ve nested occupations, education, family, and memberships <span class="cf">in</span> a way that aligns with schema.org, <span class="cf">while</span> keeping extra details <span class="cf">in</span> description when no direct property exists</span>
+<span id="cb2-3"><a href=""></a></span>
+<span id="cb2-4"><a href=""></a><span class="st">```</span><span class="at">json</span></span>
+<span id="cb2-5"><a href=""></a></span>
+<span id="cb2-6"><a href=""></a><span class="at">{</span></span>
+<span id="cb2-7"><a href=""></a><span class="at">  "@context": "https://schema.org",</span></span>
+<span id="cb2-8"><a href=""></a><span class="at">  "@type": "Person",</span></span>
+<span id="cb2-9"><a href=""></a><span class="at">  "name": "Karl Gustaf Lund",</span></span>
+<span id="cb2-10"><a href=""></a><span class="at">  "givenName": "Karl Gustaf",</span></span>
+<span id="cb2-11"><a href=""></a><span class="at">  "familyName": "Lund",</span></span>
+<span id="cb2-12"><a href=""></a><span class="at">  "birthDate": "1893-07-22",</span></span>
+<span id="cb2-13"><a href=""></a><span class="at">  "birthPlace": {</span></span>
+<span id="cb2-14"><a href=""></a><span class="at">    "@type": "Place",</span></span>
+<span id="cb2-15"><a href=""></a><span class="at">    "name": "Hille, Gävle County, Sweden"</span></span>
+<span id="cb2-16"><a href=""></a><span class="at">  },</span></span>
+<span id="cb2-17"><a href=""></a><span class="at">  "address": {</span></span>
+<span id="cb2-18"><a href=""></a><span class="at">    "@type": "PostalAddress",</span></span>
+<span id="cb2-19"><a href=""></a><span class="at">    "addressLocality": "Varberg",</span></span>
+<span id="cb2-20"><a href=""></a><span class="at">    "addressCountry": "Sweden"</span></span>
+<span id="cb2-21"><a href=""></a><span class="at">  },</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
+<p>Problem:</p>
+<ul>
+<li><p>Schema is not uniform (in fields) across biographies, combining the information is tedious</p></li>
+<li><p>Answer from LLM is often pre-pended with text, not just JSON</p></li>
+<li><p>So saving the output as JSON and reading it in is not straightforward</p></li>
+</ul>
+</div></div>
+</section>
+<section id="schema-for-output-1" class="slide level2">
+<h2>2. Schema for Output</h2>
+<h3 id="with-pydantic">With pydantic</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="kw">def</span> structure_biography_info(page_text):</span>
-<span id="cb2-2"><a href=""></a>    <span class="cf">try</span>:</span>
-<span id="cb2-3"><a href=""></a>        <span class="co"># Create a prompt for the system</span></span>
-<span id="cb2-4"><a href=""></a>        structure_prompt <span class="op">=</span> <span class="ss">f"Task: read the schema and return RFC compliant JSON information about the Swedish individuals from the 1950 biographical dictionary 'Vem är Vem' that is provided below. Use a numeric index for each biography in your JSON output and return information about all of them, including all career information available. Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g. 'fil. kand.' is 'filosofie kandidat', and 'Skarab. l.' is 'Skaraborgs Län'. Put years in full based on context. Put dates in dd/mm/yyyy format where possible. If there is no information for a key, leave it out. If there is no information for a required key, put NULL as the value.</span><span class="ch">\n</span><span class="ss">Here is the schema: </span><span class="sc">{</span>schema<span class="sc">}</span><span class="ss">.</span><span class="ch">\n</span><span class="ss">Here is the text: </span><span class="sc">{</span>page_text<span class="sc">}</span><span class="ss">. Go!"</span></span>
-<span id="cb2-5"><a href=""></a>        structure_response <span class="op">=</span> client.chat.completions.create(</span>
-<span id="cb2-6"><a href=""></a>            model<span class="op">=</span><span class="st">"gpt-3.5-turbo-1106"</span>,</span>
-<span id="cb2-7"><a href=""></a>            response_format<span class="op">=</span>{<span class="st">"type"</span>: <span class="st">"json_object"</span>},</span>
-<span id="cb2-8"><a href=""></a>            messages<span class="op">=</span>[</span>
-<span id="cb2-9"><a href=""></a>                {</span>
-<span id="cb2-10"><a href=""></a>                    <span class="st">"role"</span>: <span class="st">"system"</span>,</span>
-<span id="cb2-11"><a href=""></a>                    <span class="st">"content"</span>: <span class="st">"You are an expert on Swedish biographies."</span>,</span>
-<span id="cb2-12"><a href=""></a>                },</span>
-<span id="cb2-13"><a href=""></a>                {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="ss">f"</span><span class="sc">{</span>structure_prompt<span class="sc">}</span><span class="ss">"</span>},</span>
-<span id="cb2-14"><a href=""></a>            ],</span>
-<span id="cb2-15"><a href=""></a>        )</span>
-<span id="cb2-16"><a href=""></a></span>
-<span id="cb2-17"><a href=""></a>        structured_biography_info <span class="op">=</span> json.loads(</span>
-<span id="cb2-18"><a href=""></a>            structure_response.choices[<span class="dv">0</span>].message.content</span>
-<span id="cb2-19"><a href=""></a>        )</span>
-<span id="cb2-20"><a href=""></a></span>
-<span id="cb2-21"><a href=""></a>        <span class="cf">return</span> structured_biography_info</span>
-<span id="cb2-22"><a href=""></a></span>
-<span id="cb2-23"><a href=""></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb2-24"><a href=""></a>        <span class="bu">print</span>(<span class="ss">f"Error in structure_biography_info: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-25"><a href=""></a>        <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="kw">class</span> Occupation(BaseModel):</span>
+<span id="cb3-2"><a href=""></a>    occupation: <span class="bu">str</span> <span class="op">=</span> Field(..., description<span class="op">=</span><span class="st">"Occupation in Swedish"</span>)</span>
+<span id="cb3-3"><a href=""></a>    occupation_english: Optional[<span class="bu">str</span>] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"Occupation translated into English"</span>)</span>
+<span id="cb3-4"><a href=""></a></span>
+<span id="cb3-5"><a href=""></a><span class="kw">class</span> Parent(BaseModel):</span>
+<span id="cb3-6"><a href=""></a>    name: <span class="bu">str</span> <span class="op">=</span> Field(..., description<span class="op">=</span><span class="st">"Parent's name"</span>)</span>
+<span id="cb3-7"><a href=""></a>    occupation: Optional[Occupation] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"Parent's occupation title"</span>)</span>
+<span id="cb3-8"><a href=""></a></span>
+<span id="cb3-9"><a href=""></a>...</span>
+<span id="cb3-10"><a href=""></a></span>
+<span id="cb3-11"><a href=""></a></span>
+<span id="cb3-12"><a href=""></a><span class="kw">class</span> BioSchema(BaseModel):</span>
+<span id="cb3-13"><a href=""></a>    full_name: <span class="bu">str</span> <span class="op">=</span> Field(..., description<span class="op">=</span><span class="st">"Full name of the person"</span>)</span>
+<span id="cb3-14"><a href=""></a>    location: Optional[<span class="bu">str</span>] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"Location associated with the person"</span>)</span>
+<span id="cb3-15"><a href=""></a>    occupation: Occupation <span class="op">=</span> Field(..., description<span class="op">=</span><span class="st">"Occupation details of the person"</span>)</span>
+<span id="cb3-16"><a href=""></a>    birth_details: BirthDetails <span class="op">=</span> Field(..., description<span class="op">=</span><span class="st">"Details about the person's birth"</span>)</span>
+<span id="cb3-17"><a href=""></a>    education: Optional[List[EducationItem]] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"List of educational qualifications"</span>)</span>
+<span id="cb3-18"><a href=""></a>    career: List[CareerItem] <span class="op">=</span> Field(..., description<span class="op">=</span><span class="st">"Career history of the person"</span>)</span>
+<span id="cb3-19"><a href=""></a>    family: Optional[Family] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"Family details including spouse and children"</span>)</span>
+<span id="cb3-20"><a href=""></a>    publications: Optional[List[Publication]] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"List of publications"</span>)</span>
+<span id="cb3-21"><a href=""></a>    community_involvement: Optional[List[CommunityInvolvement]] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"Community roles and involvement"</span>)</span>
+<span id="cb3-22"><a href=""></a>    board_memberships: Optional[List[BoardMembership]] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"Board memberships held by the person"</span>)</span>
+<span id="cb3-23"><a href=""></a>    honorary_titles: Optional[List[HonoraryTitle]] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"List of honorary titles received"</span>)</span>
+<span id="cb3-24"><a href=""></a>    hobbies: Optional[List[<span class="bu">str</span>]] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"List of hobbies"</span>)</span>
+<span id="cb3-25"><a href=""></a>    travels: Optional[List[Travel]] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"Travel details"</span>)</span>
+<span id="cb3-26"><a href=""></a>    awards: Optional[List[<span class="bu">str</span>]] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"List of awards received"</span>)</span>
+<span id="cb3-27"><a href=""></a>    leadership_roles: Optional[List[<span class="bu">str</span>]] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"List of leadership roles held"</span>)</span>
+<span id="cb3-28"><a href=""></a>    languages_spoken: Optional[List[<span class="bu">str</span>]] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"Languages spoken by the person"</span>)</span>
+<span id="cb3-29"><a href=""></a>    military_service: Optional[<span class="bu">str</span>] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"Military service details"</span>)</span>
+<span id="cb3-30"><a href=""></a>    honors: Optional[<span class="bu">str</span>] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"Honors received by the person"</span>)</span>
+<span id="cb3-31"><a href=""></a>    death_date: Optional[<span class="bu">str</span>] <span class="op">=</span> Field(<span class="va">None</span>, description<span class="op">=</span><span class="st">"Date of death"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="large-language-model-to-structure-output" class="slide level2 smaller">
+<h2>3. Large Language Model to structure output</h2>
+<h3 id="many-to-choose-from">Many to choose from!</h3>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Company</th>
+<th>Environment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GPT-3.5</td>
+<td>OpenAI</td>
+<td>Cloud</td>
+</tr>
+<tr class="even">
+<td>GPT-4o</td>
+<td>OpenAI</td>
+<td>Cloud</td>
+</tr>
+<tr class="odd">
+<td>GPT-4o mini</td>
+<td>OpenAI</td>
+<td>Cloud</td>
+</tr>
+<tr class="even">
+<td>Gemini 1.5 Pro</td>
+<td>Google</td>
+<td>Cloud</td>
+</tr>
+<tr class="odd">
+<td>Gemini 1.5 Flash</td>
+<td>Google</td>
+<td>Cloud</td>
+</tr>
+<tr class="even">
+<td>Gemini 2.0 Flash</td>
+<td>Google</td>
+<td>Cloud</td>
+</tr>
+<tr class="odd">
+<td>Gemini 2.5 Pro</td>
+<td>Google</td>
+<td>Cloud</td>
+</tr>
+<tr class="even">
+<td>Llama 3.2</td>
+<td>Meta</td>
+<td>Local and Cloud</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-reveal="true" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '16px' }}}%%
+gantt
+    title Chat Model Release Timeline
+    dateFormat  YYYY-MM-DD
+    axisFormat %Y-%m
+
+    section OpenAI
+    GPT-3.5           :done, 2023-03-27, 1d
+    GPT-4o            :done, 2024-05-13, 1d
+    GPT-4o mini       :done, 2024-07-18, 1d
+    
+
+    section Google
+    Gemini 1.5 Pro    :done, 2024-02-15, 1d
+    Gemini 1.5 Flash  :done, 2024-05-14, 1d
+    Gemini 2.0 Flash  :active, 2025-01-30, 1d
+    Gemini 2.5 Pro    :active, 2025-03-25, 1d
+
+    section Meta
+    Llama 3.2         :active, 2025-08-13, 1d
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="quality-assurance" class="slide level2 smaller">
+<h2>4. Quality Assurance</h2>
+<p>We need to label some data to check how well the structuring works</p>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 16%">
+<col style="width: 15%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Field Path</th>
+<th style="text-align: left;">Ground Truth</th>
+<th style="text-align: left;">Pipeline Output</th>
+<th style="text-align: center;">TP</th>
+<th style="text-align: center;">FP</th>
+<th style="text-align: center;">FN</th>
+<th style="text-align: left;">Analysis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>full_name</code></td>
+<td style="text-align: left;"><code>Karl Gustaf Lund</code></td>
+<td style="text-align: left;"><code>Karl Gustaf Lund</code></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;"><strong>Correct</strong>: Perfect match.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>birth_details.place</code></td>
+<td style="text-align: left;"><code>Hille, Gävleborgs län</code></td>
+<td style="text-align: left;"><code>Hille, Gävle County</code></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><strong>Incorrect</strong>: Similar but not an exact match. Scored as a miss and a mistake.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>education</code> (list)</td>
+<td style="text-align: left;">3 items</td>
+<td style="text-align: left;">0 items</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: left;"><strong>Missed</strong>: Failed to extract any education entries.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>career</code> (list)</td>
+<td style="text-align: left;">6 items</td>
+<td style="text-align: left;">2 items</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;"><strong>Partial</strong>: Found 1/6 correctly, hallucinated 1, and missed the other 5.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>family.spouse.birth_date</code></td>
+<td style="text-align: left;"><code>null</code></td>
+<td style="text-align: left;"><code>1936</code></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;"><strong>Hallucination</strong>: Extracted marriage year as a non-existent birth date.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>family.children</code> (list)</td>
+<td style="text-align: left;">2 items</td>
+<td style="text-align: left;">1 item</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><strong>Partial</strong>: Found 1 of the 2 children and missed the other.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Totals</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="performance" class="slide level2">
+<h2>Performance</h2>
+<h3 id="based-on-a-sample-of-2000-hand-labeled-and-scored-biographies">Based on a sample of 2000 hand-labeled and scored biographies</h3>
+<p><br></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Company</th>
+<th>Environment</th>
+<th>Precision</th>
+<th>Recall</th>
+<th>F1-Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GPT-3.5</td>
+<td>OpenAI</td>
+<td>Cloud</td>
+<td>46%</td>
+<td>72%</td>
+<td>56%</td>
+</tr>
+<tr class="even">
+<td>GPT-4o mini</td>
+<td>OpenAI</td>
+<td>Cloud</td>
+<td>72%</td>
+<td>78%</td>
+<td>75%</td>
+</tr>
+<tr class="odd">
+<td>Llama 3.2</td>
+<td>Meta</td>
+<td>Local and Cloud</td>
+<td>75%</td>
+<td>81%</td>
+<td>78%</td>
+</tr>
+<tr class="even">
+<td>Gemini 2.5 Pro</td>
+<td>Google</td>
+<td>Cloud</td>
+<td>88%</td>
+<td>90%</td>
+<td>89%</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="performance-1" class="slide level2">
+<h2>Performance</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><p>Manually labelling and scoring 2,000 biographies took about three weeks of full-time work.</p></li>
+<li><p>To do the 75,000 biographies in Vem är Vem would take about 1.5 years, just to collect.</p></li>
+<li><p>Once this system is in place, we can run the structuring on new biographies in a matter of minutes</p></li>
+</ul>
+</div><div class="column">
+<p><img data-src="assets/wikihow.jpeg"></p>
+</div></div>
+</section></section>
+<section>
+<section id="sec-learnings" class="title-slide slide level1 center" data-background-color="#1C9E77" data-visibility="uncounted">
+<h1>What do we learn?</h1>
+<p>(about the engineers?)</p>
+</section>
+<section id="what-do-we-learn" class="slide level2">
+<h2>What do we learn?</h2>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
+<section id="what-do-we-learn-1" class="slide level2">
+<h2>What do we learn?</h2>
+<h3 id="engineers-in-electrical-appliances-and-machinery-move-the-furthest-from-birthplace-to-study">Engineers in <code>electrical appliances and machinery</code> move the furthest from birthplace to study</h3>
+
+<img data-src="assets/engineer_distance.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="what-do-we-learn-2" class="slide level2">
+<h2>What do we learn?</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><p>4,700 Swedes who studied engineering moved to the USA and returned between 1890 and 1960.</p></li>
+<li><p>Of those engineers who move to the USA and return, about 30% of them return to Sweden within 5 years, and about 90% return within 10 years.</p></li>
+<li><p>They work on average at 2.1 different companies while in the USA.</p></li>
+<li><p>When they get back to Sweden, two-thirds of key positions in industry were held by engineers with foreign experience.</p></li>
+<li><p>The firms that hire returning engineers saw faster growth in employment than firms that did not hire returning engineers.</p></li>
+</ul>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="assets/p4_2.png" width="747"></p>
+</figure>
+</div>
+</div>
 </div>
 </div></div>
 </section></section>
 <section>
-<section id="sec-classification" class="title-slide slide level1 center" data-visibility="uncounted" data-background-color="#1b9e77">
-<h1>Classification of occupational titles</h1>
-<p>Who is an engineer?</p>
+<section id="sec-what-did-we-learn" class="title-slide slide level1 center" data-background-color="#1C9E77" data-visibility="uncounted">
+<h1>What did we learn?</h1>
+<p>(about data structuring tasks?)</p>
 </section>
-<section id="hisco-codes" class="slide level2">
-<h2>HISCO codes</h2>
+<section id="there-is-a-lot-of-unstructured-historical-data-out-there" class="slide level2">
+<h2>There is a lot of unstructured historical data out there!</h2>
+<div class="columns">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/world_champtions.jpeg" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div><div class="column">
 <ul>
-<li>Derived from ISCO (International Standard Classification of Occupations)</li>
-<li>Invented for the sake of international comparability<br>
-</li>
-<li>Introduced by Leuwen, Maas, Miles (2002) based on ISCO68<br>
-</li>
-<li>Hiearchical structure well suited for analysis</li>
+<li><p>I am sure that in your own work, there is a lot of unstructured data that you would like to use for some purpose.</p></li>
+<li><p>Investing a bit of time in setting up a system to structure that data can pay off in the long run - and save you <strong>~ 1.5 years of manual labour</strong></p></li>
+<li><p>These kinds of tasks are going to become easier and easier to do as LLMs improve - the kinds of questions you can ask are going to become more interesting!</p></li>
 </ul>
+</div></div>
 </section>
 <section id="references" class="slide level2 smaller scrollable" data-visibility="uncounted">
 <h2>References</h2>
@@ -846,6 +1217,9 @@ Bengtsson, Erik, and Jakob Molinder. 2021. <span>“What <span>Happened</span> t
 Vattenfall. 1948. <span>“Procentuellt Antal Elektrifierade Hush<span>å</span>ll.”</span> Vattenfall.
 </div>
 </div>
+</section>
+<section id="appendix" class="slide level2" data-visibility="uncounted">
+<h2>Appendix</h2>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 

@@ -51,6 +51,9 @@ df_tidy %>%
     ) +
     theme_minimal()
 
+
+
+# df_tidy %>% filter(year == 1951) %>% arrange(desc(gdp_per_capita)) %>% slice(1:10)
 ```
 
 

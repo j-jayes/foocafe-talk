@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swedish Engineers' Knowledge Transfer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1B9E77 0%, #7570B3 100%);
+            color: white;
+            overflow-x: auto;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            min-width: 1200px;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .title {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 100;
+        }
+
+        .title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .title p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .journey-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 1400px;
+            position: relative;
+        }
+
+        .country {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .country-flag {
+            width: 120px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sweden-flag {
+            background: linear-gradient(to bottom, #006aa7 33%, #fecc00 33%, #fecc00 66%, #006aa7 66%);
+        }
+
+        .usa-flag {
+            background: linear-gradient(to bottom, 
+                #b22234 7.69%, white 7.69%, white 15.38%, 
+                #b22234 15.38%, #b22234 23.08%, white 23.08%, 
+                white 30.77%, #b22234 30.77%, #b22234 38.46%, 
+                white 38.46%, white 46.15%, #b22234 46.15%, 
+                #b22234 53.85%, white 53.85%);
+            position: relative;
+        }
+
+        .usa-flag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 53.85%;
+            background: #3c3b6e;
+        }
+
+        .country h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #E6AB02;
+        }
+
+        .engineers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            min-height: 120px;
+        }
+
+        .engineer {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .engineer:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        .engineer.moving {
+            animation: moveToAmerica 3s ease-in-out;
+        }
+
+        .engineer.returning {
+            animation: returnToSweden 3s ease-in-out;
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+        }
+
+        .knowledge-box {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 200px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .knowledge-box:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+
+        .knowledge-item {
+            margin: 10px 0;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .knowledge-item:nth-child(1) { animation-delay: 0.2s; }
+        .knowledge-item:nth-child(2) { animation-delay: 0.4s; }
+        .knowledge-item:nth-child(3) { animation-delay: 0.6s; }
+        .knowledge-item:nth-child(4) { animation-delay: 0.8s; }
+
+        .arrow {
+            font-size: 4rem;
+            color: #ffd700;
+            margin: 0 40px;
+            animation: pulse 2s ease-in-out infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .arrow:hover {
+            transform: scale(1.2);
+            color: #ffed4e;
+        }
+
+        .companies {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .company {
+            background: rgba(255,215,0,0.2);
+            border: 1px solid rgba(255,215,0,0.5);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #ffd700;
+            transition: all 0.3s ease;
+        }
+
+        .company:hover {
+            background: rgba(255,215,0,0.3);
+            transform: scale(1.05);
+        }
+
+        .stats {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+            padding: 20px 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            display: inline-block;
+            margin: 0 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffd700;
+            display: block;
+        }
+
+        @keyframes moveToAmerica {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(400px) translateY(-50px); }
+            100% { transform: translateX(800px); }
+        }
+
+        @keyframes returnToSweden {
+            0% { transform: translateX(800px); }
+            50% { transform: translateX(400px) translateY(-50px); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .control-panel {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.7);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .control-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 10px 0;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <!-- <h1>Swedish Engineers' Knowledge Transfer</h1> -->
+            <!-- <p>The Journey of Industrial Innovation (Late 19th - Early 20th Century)</p> -->
+        </div>
+
+        <div class="journey-container">
+            <!-- Sweden -->
+            <div class="country">
+                <div class="country-flag sweden-flag"></div>
+                <h2>Sweden</h2>
+                <div class="engineers" id="sweden-engineers">
+                    <div class="engineer">👨‍💼</div>
+                    <div class="engineer">👨‍🔬</div>
+                    <div class="engineer">👨‍💻</div>
+                    <div class="engineer">👨‍🏭</div>
+                    <div class="engineer">👨‍🔧</div>
+                    <div class="engineer">👨‍⚕️</div>
+                </div>
+                
+                <div class="knowledge-box">
+                    <h3>Initial State</h3>
+                    <div class="knowledge-item">Traditional manufacturing methods</div>
+                    <div class="knowledge-item">Local engineering practices</div>
+                    <div class="knowledge-item">Limited industrial organization</div>
+                    <div class="knowledge-item">Small-scale production</div>
+                </div>
+
+                <div class="companies">
+                    <div class="company">ASEA</div>
+                    <div class="company">Sandviken</div>
+                    <div class="company">Bolinders</div>
+                    <div class="company">Boliden</div>
+                </div>
+            </div>
+
+            <!-- Arrow to America -->
+            <div class="arrow" onclick="startJourney()" id="arrow-to-america">→</div>
+
+            <!-- America -->
+            <div class="country">
+                <div class="country-flag usa-flag"></div>
+                <h2>United States</h2>
+                <div class="engineers" id="america-engineers">
+                </div>
+                
+                <div class="knowledge-box">
+                    <h3>Knowledge Acquired</h3>
+                    <div class="knowledge-item">⚙️ <strong>Taylorist Principles</strong> - Time & motion studies</div>
+                    <div class="knowledge-item">🏭 <strong>Mass Production</strong> - Assembly lines & standardization</div>
+                    <div class="knowledge-item">📊 <strong>Rational Organization</strong> - Scientific management</div>
+                    <div class="knowledge-item">🤝 <strong>Welfare Capitalism</strong> - Worker loyalty programs</div>
+                </div>
+
+                <div class="companies">
+                    <div class="company">General Electric</div>
+                    <div class="company">Westinghouse</div>
+                    <div class="company">Carnegie Steel</div>
+                    <div class="company">Anaconda</div>
+                </div>
+            </div>
+
+            <!-- Arrow back to Sweden -->
+            <div class="arrow" onclick="returnHome()" id="arrow-to-sweden">←</div>
+
+            <!-- Sweden (Transformed) -->
+            <div class="country">
+                <div class="country-flag sweden-flag"></div>
+                <h2>Sweden (Transformed)</h2>
+                <div class="engineers" id="sweden-transformed">
+                </div>
+                
+                <div class="knowledge-box">
+                    <h3>Implementation & Impact</h3>
+                    <div class="knowledge-item">🔧 Modern electrical systems (ASEA)</div>
+                    <div class="knowledge-item">🏗️ Advanced steel production (Sandviken)</div>
+                    <div class="knowledge-item">⚙️ Efficient engine manufacturing (Bolinders)</div>
+                    <div class="knowledge-item">🏭 World-class smelting facilities (Boliden)</div>
+                </div>
+
+                <div class="companies">
+                    <div class="company">Modernized ASEA</div>
+                    <div class="company">Efficient Sandviken</div>
+                    <div class="company">Advanced Bolinders</div>
+                    <div class="company">Industrial Boliden</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number">30.8%</span>
+                <span>Returnees in Management</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">66%</span>
+                <span>Key Positions Filled</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">6000</span>
+                <span>Engineers Studied</span>
+            </div>
+        </div> -->
+
+        <div class="control-panel">
+            <button class="control-btn" onclick="startJourney()">Start Journey</button>
+            <button class="control-btn" onclick="returnHome()">Return Home</button>
+            <button class="control-btn" onclick="resetAnimation()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        let journeyStarted = false;
+        let returnStarted = false;
+
+        function startJourney() {
+            if (journeyStarted) return;
+            journeyStarted = true;
+
+            const swedenEngineers = document.getElementById('sweden-engineers');
+            const americaEngineers = document.getElementById('america-engineers');
+            const engineers = swedenEngineers.querySelectorAll('.engineer');
+
+            engineers.forEach((engineer, index) => {
+                setTimeout(() => {
+                    engineer.classList.add('moving');
+                    setTimeout(() => {
+                        // Move engineer to America
+                        engineer.remove();
+                        americaEngineers.appendChild(engineer);
+                        engineer.classList.remove('moving');
+                        engineer.style.animation = 'none';
+                    }, 3000);
+                }, index * 500);
+            });
+
+            // Highlight the return arrow after all engineers have moved
+            setTimeout(() => {
+                document.getElementById('arrow-to-sweden').style.animation = 'pulse 1s ease-in-out infinite';
+            }, 6000);
+        }
+
+        function returnHome() {
+            if (!journeyStarted || returnStarted) return;
+            returnStarted = true;
+
+            const americaEngineers = document.getElementById('america-engineers');
+            const swedenTransformed = document.getElementById('sweden-transformed');
+            const engineers = americaEngineers.querySelectorAll('.engineer');
+
+            engineers.forEach((engineer, index) => {
+                setTimeout(() => {
+                    engineer.classList.add('returning');
+                    setTimeout(() => {
+                        // Move engineer back to Sweden (transformed)
+                        engineer.remove();
+                        swedenTransformed.appendChild(engineer);
+                        engineer.classList.remove('returning');
+                        engineer.style.animation = 'none';
+                        // Add knowledge indicator
+                        engineer.title = 'Engineer with American knowledge and experience';
+                    }, 3000);
+                }, index * 400);
+            });
+        }
+
+        function resetAnimation() {
+            journeyStarted = false;
+            returnStarted = false;
+
+            // Clear all engineer containers
+            document.getElementById('america-engineers').innerHTML = '';
+            document.getElementById('sweden-transformed').innerHTML = '';
+
+            // Reset Sweden engineers
+            const swedenEngineers = document.getElementById('sweden-engineers');
+            swedenEngineers.innerHTML = `
+                <div class="engineer">👨‍💼</div>
+                <div class="engineer">👨‍🔬</div>
+                <div class="engineer">👨‍💻</div>
+                <div class="engineer">👨‍🏭</div>
+                <div class="engineer">👨‍🔧</div>
+                <div class="engineer">👨‍⚕️</div>
+            `;
+
+            // Reset arrow animations
+            document.getElementById('arrow-to-sweden').style.animation = 'none';
+        }
+
+        // Auto-start demonstration after 2 seconds
+        setTimeout(() => {
+            if (!journeyStarted) {
+                startJourney();
+                setTimeout(() => {
+                    if (!returnStarted) {
+                        returnHome();
+                    }
+                }, 8000);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
