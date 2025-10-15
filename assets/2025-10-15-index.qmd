@@ -5,11 +5,11 @@ date: today
 author: 
   - "Jonathan Jayes"
 title-slide-attributes:
-  data-background-image: "assets/Nexer-Insight-Landing.jpeg"
+  data-background-image: "assets/nexer-og.png"
   data-background-position: "bottom 10"
   data-background-size: "90%"
   data-background-opacity: "0.7"
-  data-background-color: "#030303"
+  data-background-color: "#3B8C41"
 format: 
   revealjs:
     theme: [default, assets/clean.scss]
@@ -57,9 +57,11 @@ bibliography: references.bib
 ::: {.columns}
 ::: {.column}
 
-- Started at Insight as a data scientist on October 1st
+- PhD student in Economic History at Lund
 
-- Will defend my PhD in Economic History at Lund on Friday!
+- Work on economic development in Sweden and tools to turn archival data into stories
+
+- Work part time as a data scientist at [Codera Analytics](https://codera.co.za/)
 
 - From South Africa originally
 
@@ -79,7 +81,7 @@ knitr::include_graphics("assets/jj_run.jpeg")
 ![](assets/aYWyRzV_700bwp.jpeg)
 
 
-## When did Sweden become rich💸?
+## When did Sweden become rich🇸🇪💸?
 
 :::{.center}
 
@@ -92,7 +94,7 @@ knitr::include_graphics("figures/ed_step1_sweden.png")
 
 We need more context
 
-## When did Sweden become rich💸?
+## When did Sweden become rich🇸🇪💸?
 
 :::{.center}
 
@@ -104,7 +106,7 @@ knitr::include_graphics("figures/ed_step2_sweden_vs_all.png")
 
 Versus the rest of the world
 
-## When did Sweden become rich💸?
+## When did Sweden become rich🇸🇪💸?
 
 :::{.center}
 
@@ -116,7 +118,7 @@ knitr::include_graphics("figures/ed_step5_sweden_uk_sa_vs_all.png")
 
 Versus the first industrializing country 🇬🇧 and South Africa 🇿🇦
 
-## Why did Sweden become rich?
+## Why did Sweden become rich🇸🇪?
 
 . . .
 
@@ -181,38 +183,38 @@ gantt
 
 Many reasons!!
 
-## Why did Sweden become rich?
+## Why did Sweden become rich🇸🇪?
 
 ### My preferred explanation: Sweden's Electrification
 
 ![](assets/map_big_power_stations.jpeg){fig-align="center"}
 
-## Why did Sweden become rich?{visibility="uncounted" transition="none"}
+## Why did Sweden become rich🇸🇪?{visibility="uncounted" transition="none"}
 
 ### My preferred explanation: Sweden's Electrification
 
 ![](assets/map_big_power_stations_line_1900.jpeg){fig-align="center"}
 
-## Why did Sweden become rich?{visibility="uncounted" transition="none"}
+## Why did Sweden become rich🇸🇪?{visibility="uncounted" transition="none"}
 
 ### My preferred explanation: Sweden's Electrification
 
 ![](assets/map_big_power_stations_line_1911.jpeg){fig-align="center"}
 
-## Why did Sweden become rich?{visibility="uncounted" transition="none"}
+## Why did Sweden become rich🇸🇪?{visibility="uncounted" transition="none"}
 
 ### My preferred explanation: Sweden's Electrification
 
 ![](assets/map_big_power_stations_line_1926.jpeg){fig-align="center"}
 
-<!-- ## Why did Sweden become rich?{visibility="uncounted" transition="none"}
+## Why did Sweden become rich🇸🇪?{visibility="uncounted" transition="none"}
 
 ### My preferred explanation: Sweden's Electrification
 
-![](assets/schon-energy-share.jpeg){fig-align="center"} -->
+![](assets/schon-energy-share.jpeg){fig-align="center"}
 
-<!-- 
-## Why did Sweden become rich?{visibility="uncounted" transition="none"}
+
+## Why did Sweden become rich🇸🇪?{visibility="uncounted" transition="none"}
 
 ### My preferred explanation: Sweden's Electrification
 
@@ -246,9 +248,9 @@ Second, Sweden in the early 20th century was undergoing a levelling in terms of 
 
 Further, electrification as a general purpose technology drastically changed that way that we worked and lived; agricultural tasks that used to be very labour intensive were mechanised and then electrified, freeing up labour to move in to factories - which also were completely transformed by the electric motor, improving the quality of the jobs in the factory compared to the risks of belt drives from a central drive shaft, and allowing modular factory production, running only some machines at a time. 
 
-::: -->
+:::
 
-## Why did Sweden become rich?
+## Why did Sweden become rich🇸🇪?
 
 ### Learning and returning (Grönberg 2003)
 
@@ -259,6 +261,44 @@ Further, electrification as a general purpose technology drastically changed tha
 ```
 
 :::
+
+## Why did Sweden become rich🇸🇪?
+
+To answer the question of why Sweden became rich, we need to get data from source material from the time. 
+
+:::: {.columns}
+
+::: {.column width=33%}
+
+<!-- ```{r}
+knitr::include_graphics(here::here("assets/reading_ransom.jpg"))
+``` -->
+
+![](assets/reading_ransom.jpg){fig-align="center" width=100%}
+
+
+:::
+
+::: {.column width=33%}
+
+<!-- ```{r}
+knitr::include_graphics(here::here("assets/Electrolux_1950_page_5.jpeg"))
+``` -->
+
+![](assets/Electrolux_1950_page_5.jpeg){fig-align="center" width=100%}
+
+:::
+
+::: {.column width=33%}
+
+<!-- ```{r}
+knitr::include_graphics(here::here("assets/vem_page copy.png"))
+``` -->
+
+![](assets/vem_page copy.png){fig-align="center" width=100%}
+:::
+
+:::: 
 
 # Messy Biographies to Clean Data{visibility="uncounted" #sec-structuring-data background-color="#1b9e77"}
 
@@ -292,7 +332,6 @@ The intention was, according to the publishers, to draw attention **to people wh
 
 ::::
 
-<!-- 
 ## Vem är Vem? Volumes
 
 ![](assets/who-is-who-volumes.png){fig-align="center" width=100%}
@@ -341,15 +380,15 @@ ggplot(books, aes(x = records, y = name, fill = factor(volume))) +
 
 ggsave("assets/who-is-who-volumes.png", width = 6, height = 4, units = "in", dpi = 300)
 ```
- -->
+
 
 ## Vem är Vem? Example page
 
 ![](assets/vem_page.png){fig-align="center" width=100%}
 
-<!-- ## Vem är Vem? Example biography
+## Vem är Vem? Example biography
 
-![](assets/vem_page close-up.jpg){fig-align="center" width=100%} -->
+![](assets/vem_page close-up.jpg){fig-align="center" width=100%}
 
 ## Vem är Karl Lund?
 
@@ -669,10 +708,9 @@ We need to label some data to check how well the structuring works
 
 (about the engineers?)
 
-<!-- ## What do we learn?
+## What do we learn?
 
 ```{r}
-library(tidyverse)
 library(ggtext)
 library(showtext)
 library(tidyverse)
@@ -753,7 +791,7 @@ timeline %>%
 
 ### Engineers in `electrical appliances and machinery` move the furthest from birthplace to study
 
-![](assets/engineer_distance.png){fig-align="center" width=100%} -->
+![](assets/engineer_distance.png){fig-align="center" width=100%}
 
 ## What do we learn?
 
@@ -805,3 +843,15 @@ knitr::include_graphics("assets/p4_2.png")
 
 :::
 ::: 
+
+
+
+
+## References{visibility="uncounted"}
+
+::: {#refs}
+
+:::
+
+## Appendix{visibility="uncounted"}
+
